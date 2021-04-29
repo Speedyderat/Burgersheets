@@ -1,7 +1,7 @@
 /* This program has been written by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 2.1 from module 4 CreaTe 2021 */
 int middleWidth, middleHeight, buffer;
 int diceSize= 6;
-int[] counter = new int[6];
+int[] counter = new int[diceSize];
 
 void setup () {
   size(500, 500);
@@ -13,6 +13,10 @@ void setup () {
 void draw () {
   background(0);
   text(buffer, middleWidth, middleHeight );
+  probCounter();
+  for (int i = 0; i < counter.length; i++) {
+    text(counter[i], middleWidth, middleHeight+15);
+  }
 }
 
 int getRandomNumber() {
@@ -20,12 +24,13 @@ int getRandomNumber() {
 }
 
 void probCounter() {
-  for (int i = 0; i < 80; i = i+5) {
+  for (int i = 0; i < counter.length; i++) {
     if (buffer == i) {
       counter[i]++;
     }
   }
+}
 
-  void mousePressed() {
-    buffer = getRandomNumber();
-  }
+void mousePressed() {
+  buffer = getRandomNumber();
+}
