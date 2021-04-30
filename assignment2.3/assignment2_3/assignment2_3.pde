@@ -1,4 +1,4 @@
-/* This program has been written by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 2.1 from module 4 CreaTe 2021 */
+/* This program has been modified by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 2.1 from module 4 CreaTe 2021 */
 // The Nature of Code
 // Daniel Shiffman
 // http://natureofcode.com
@@ -20,7 +20,7 @@ void draw() {
   float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
   float bean = height/2;
   xloc = ( xloc * sd ) + mean;  // Scale the gaussian random number by standard deviation and mean
-  yloc = ( yloc * sd ) + bean;  // Scale the gaussian random number by standard deviation and boobies
+  yloc = ( yloc * sd ) + bean;  // Scale the gaussian random number by standard deviation and bean
   ass  = ( ass *  nsd ) + random(0,20);
 
   fill(255, 251, 0, 69);

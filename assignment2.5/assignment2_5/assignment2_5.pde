@@ -1,28 +1,37 @@
-// The Nature of Code
+/* This program has been modified by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 2.1 from module 4 CreaTe 2021 */
 // Daniel Shiffman
+// The Nature of Code
 // http://natureofcode.com
 
+float xoff = 0.0;
+float xincrement = 0.03; 
+float yoff = 0.0;
+float yincrement = 0.01; 
+
 void setup() {
-  size(640, 360);
-  background(255);
+  size(200,200);
+  background(0);
+  noStroke();
 }
 
 void draw() {
-
-  // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
-  float xloc = randomGaussian();
-  float yloc = randomGaussian();
-  float ass  = randomGaussian();
-
-  float sd = 60;                // Define a standard deviation
-  float nsd = 20;
-  float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
-  float boobies = height/2;
-  xloc = ( xloc * sd ) + mean;  // Scale the gaussian random number by standard deviation and mean
-  yloc = ( yloc * sd ) + boobies;  // Scale the gaussian random number by standard deviation and boobies
-  ass  = ( ass *  nsd ) + random(0,20);
-
-  fill(255, 251, 0, 69);
-  noStroke();
-  ellipse(xloc, yloc, ass, ass);   // Draw an ellipse at our "normal" random position
+  // Create an alpha blended background
+  fill(0, 10);
+  rect(0,0,width,height);
+  
+  // Get a noise value based on xoff and scale it according to the window's width
+  float n = noise(xoff)*width;
+  
+    // Get a noise value based on xoff and scale it according to the window's width
+  float p = noise(yoff)*height;
+  
+  // With each cycle, increment xoff
+  xoff += xincrement;
+  
+    // With each cycle, increment yoff
+  yoff += yincrement;
+  
+  // Draw the ellipse at the value produced by perlin noise
+  fill(200);
+  ellipse(n,p,16,16);
 }
