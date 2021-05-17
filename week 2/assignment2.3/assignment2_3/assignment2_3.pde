@@ -13,7 +13,7 @@ void draw() {
   // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
   float xloc = randomGaussian();
   float yloc = randomGaussian();
-  float ass  = randomGaussian();
+  float normalvariablename  = randomGaussian();
 
   float sd = 60;                // Define a standard deviation
   float nsd = 20;
@@ -21,9 +21,9 @@ void draw() {
   float bean = height/2;
   xloc = ( xloc * sd ) + mean;  // Scale the gaussian random number by standard deviation and mean
   yloc = ( yloc * sd ) + bean;  // Scale the gaussian random number by standard deviation and bean
-  ass  = ( ass *  nsd ) + random(0,20);
+  normalvariablename  = ( normalvariablename *  nsd ) + random(0,20);
 
   fill(255, 251, 0, 69);
   noStroke();
-  ellipse(xloc, yloc, ass, ass);   // Draw an ellipse at our "normal" random position
+  ellipse(xloc, yloc, normalvariablename, normalvariablename);   // Draw an ellipse at our "normal" random position
 }
