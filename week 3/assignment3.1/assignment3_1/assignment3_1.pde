@@ -2,21 +2,31 @@
 
 Ball ball;
 Catapult catapult;
+PVector cataLocation;
 
 void setup() {
   size(1000, 750);
-  ball = new Ball(new PVector(100, 100));   // a ball gets a position initially
-  catapult = new Catapult(new PVector(150, 430), ball);  // a catapult has a position and a ball it shoots
+  cataLocation = new PVector(150, 430);
+    ball = new Ball();   // a ball gets a position initially
+  catapult = new Catapult(cataLocation, ball);  // a catapult has a position and a ball it shoots
 }
-void draw() { 
-  background(111, 179, 250);
-  fill (65,82,45);
-  catapult.update();
-  ball.update();  
-  catapult.renderBack();  
-  ball.render();
-  catapult.renderFront(); 
+
+void draw() {
+
+  // background
+  background(110, 180, 250);
+  fill (60, 80, 50);
+  noStroke();
+  rect(0, height-100, 1000, 100);
+
+  // ball&catapult
+  catapult.update(); //to update all the handelings of the catapult
+  ball.update(); //to update all the handelings of the ball
+  catapult.renderBack(); //backside of the catapult
+  ball.render(); //drawing the ball
+  catapult.renderFront();  //frontside of the catapult, to create an ellusion of the ball passing through
 }
+
 void mouseDragged() { //dragging the ball in the catapult
   catapult.mouseDraggedEvent(new PVector(mouseX, mouseY));
 }

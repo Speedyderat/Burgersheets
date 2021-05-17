@@ -3,8 +3,8 @@ class Ball {
   PVector location, velocity, gravity, friction;
   boolean release;
 
-  Ball(PVector location) {
-    this.location = location;
+  Ball() {
+    location = new PVector(0, 0);
     velocity = new PVector(20, 0);
     gravity = new PVector(0, .4);
     release = false;
