@@ -7,8 +7,8 @@ PVector cataLocation;
 void setup() {
   size(1000, 750);
   cataLocation = new PVector(150, 430);
-    ball = new Ball();   // a ball gets a position initially
-  catapult = new Catapult(cataLocation, ball);  // a catapult has a position and a ball it shoots
+    ball = new Ball();                                                              // a ball gets a position initially
+  catapult = new Catapult(cataLocation, ball);                                      // a catapult has a position and a ball it shoots
 }
 
 void draw() {
@@ -20,17 +20,17 @@ void draw() {
   rect(0, height-100, 1000, 100);
 
   // ball&catapult
-  catapult.update(); //to update all the handelings of the catapult
-  ball.update(); //to update all the handelings of the ball
-  catapult.renderBack(); //backside of the catapult
-  ball.render(); //drawing the ball
-  catapult.renderFront();  //frontside of the catapult, to create an ellusion of the ball passing through
+  catapult.update();                                                               //to update all the handelings of the catapult
+  ball.update();                                                                   //to update all the handelings of the ball
+  catapult.renderBack();                                                           //backside of the catapult
+  ball.render();                                                                   //drawing the ball
+  catapult.renderFront();                                                          //frontside of the catapult, to create an ellusion of the ball passing through
 }
 
-void mouseDragged() { //dragging the ball in the catapult
+void mouseDragged() {                                                              //dragging the ball in the catapult
   catapult.mouseDraggedEvent(new PVector(mouseX, mouseY));
 }
 
-void mouseReleased() { // releasing the ball from the catapult
+void mouseReleased() {                                                             // releasing the ball from the catapult
   catapult.mouseReleasedEvent();
 }
