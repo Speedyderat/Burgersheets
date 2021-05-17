@@ -1,3 +1,5 @@
+/* This is the catapult class, in here the catapult is described and how it interacts with the ball */
+
 class Catapult {
 
   PVector location, mouse, catapultMiddle;
