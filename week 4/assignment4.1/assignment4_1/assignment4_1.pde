@@ -1,9 +1,10 @@
 /* This program has been written by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 4 from module 4 CreaTe 2021 */
 
-Wand wand;
+//Wand wand;
 ParticleSystem magicDust;
 
 void setup() {
+  size(640,360);
   magicDust = new ParticleSystem();// the wand needs a reference to the 
   magicDustwand = new Wand(magicDust);
 }
@@ -11,8 +12,8 @@ void draw() {
   magicDust.update();
   wand.update();
   magicDust.render();
-  wand.render();
+  //wand.render();
 }
 void mouseDragged() {
-  wand.MouseDraggedEvent(new PVector(mouseX, mouseY));
+  //wand.MouseDraggedEvent(new PVector(mouseX, mouseY));
 }
