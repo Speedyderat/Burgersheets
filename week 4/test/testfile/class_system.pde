@@ -15,14 +15,11 @@ class ParticleSystem {
   void addParticle() {
     if (click == true) {
       particles.add(new Particle(mouse));
-    } else {
-      particles.add(new Particle(origin));
     }
   }
 
   void run() {
-    Iterator<Particle> it =
-      particles.iterator();
+    Iterator<Particle> it = particles.iterator();
     while (it.hasNext()) {
       Particle p = it.next();
       p.run();
@@ -38,6 +35,6 @@ class ParticleSystem {
   }
 
   void mouseReleasedEvent() {                                                     //if ball is released then release is obviously true
-    click = true;
+    click = false;
   }
 }

@@ -3,14 +3,17 @@ class Particle {
   PVector location;
   PVector velocity;
   PVector acceleration;
-  float lifespan;
+  float lifespan, colourR, colourG, colourB;
 
   Particle(PVector l) {
     //[offset-up] For demonstration purposes we assign the Particle an initial velocity and constant acceleration.
-    acceleration = new PVector(0, 0.05);
+    acceleration = new PVector(0, random(-0.05, 0.05));
     velocity = new PVector(random(-1, 1), random(-2, 0));
     location = l.copy();
     lifespan = 255.0;
+    colourR = random(255);
+    colourG = random(255);
+    colourB = random(255);
   }
 
   // Sometimes it’s convenient to have a “run”
@@ -28,7 +31,7 @@ class Particle {
 
   void display() {
     stroke(0, lifespan);
-    fill(0, lifespan);
+    fill(colourR, colourG, colourB, lifespan);
     ellipse(location.x, location.y, 8, 8);
   }
 
