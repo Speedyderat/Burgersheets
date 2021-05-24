@@ -1,25 +1,24 @@
+/* system for the particles giving them a location and making them appear when the mouse is being clicked/dragged */
 class ParticleSystem {
 
   ArrayList<Particle> particles;
-  // This particular ParticleSystem implementation
-  // includes an origin point where each Particle begins.
   PVector origin, mouse;
   boolean click;
-  import java.util.Iterator;  // Import the class of Iterator
+  import java.util.Iterator;                                                      // Import the class of Iterator
 
   ParticleSystem(PVector location) {
-    origin = location.copy();
+    origin = location.copy();                                                     //point of origin where each Particle begins
     particles = new ArrayList<Particle>();
   }
 
-  void addParticle() {
+  void addParticle() {                                                            //when the mouse is clicked then add a particle
     if (click == true) {
       particles.add(new Particle(mouse));
     }
   }
 
   void run() {
-    Iterator<Particle> it = particles.iterator();
+    Iterator<Particle> it = particles.iterator();                                 //remove the particle from the array when it is not "alive" anymore
     while (it.hasNext()) {
       Particle p = it.next();
       p.run();
@@ -31,10 +30,10 @@ class ParticleSystem {
 
   void mouseDraggedEvent(PVector mouseLocation) {                                 //when the ball is being dragged the ball is in state one
     mouse = mouseLocation;                                                        //the location of the mouse is passed through to "mouse"
-    click = true;
+    click = true;                                                                 //if mouse is clicked/dragged then click is true
   }
 
-  void mouseReleasedEvent() {                                                     //if ball is released then release is obviously true
+  void mouseReleasedEvent() {                                                     //if mouse is released then click is false
     click = false;
   }
 }

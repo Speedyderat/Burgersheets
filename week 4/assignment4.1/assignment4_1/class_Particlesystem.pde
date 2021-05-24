@@ -1,22 +1,39 @@
-class Particle { //A “Particle” object is just another name for our “Mover.” It has location, velocity, and acceleration.
-  PVector location;
-  PVector velocity;
-  PVector acceleration;
- 
-  Particle(PVector l) {
-    location = l.get();
-    acceleration = new PVector();
-    velocity = new PVector();
+/* system for the particles giving them a location and making them appear when the mouse is being clicked/dragged */
+class ParticleSystem {
+
+  ArrayList<Particle> particles;
+  PVector origin, mouse;
+  boolean click;
+  import java.util.Iterator;                                                      // Import the class of Iterator
+
+  ParticleSystem() {
+    origin = new PVector(0, 0);                                                     //point of origin where each Particle begins
+    particles = new ArrayList<Particle>();
   }
- 
-  void update() {
-    velocity.add(acceleration);
-    location.add(velocity);
+
+  void addParticle() {                                                            //when the mouse is clicked then add a particle
+    if (click == true) {
+      particles.add(new Particle(mouse));
+    }
   }
- 
-  void display() {
-    stroke(0);
-    fill(175);
-    ellipse(location.x,location.y,8,8);
+
+  void run() {
+    Iterator<Particle> it = particles.iterator();                                 //remove the particle from the array when it is not "alive" anymore
+    while (it.hasNext()) {
+      Particle p = it.next();
+      p.run();
+      if (p.isDead()) {
+        it.remove();
+      }
+    }
+  }
+
+  void mouseDraggedEvent(PVector mouseLocation) {                                 //when the ball is being dragged the ball is in state one
+    mouse = mouseLocation;                                                        //the location of the mouse is passed through to "mouse"
+    click = true;                                                                 //if mouse is clicked/dragged then click is true
+  }
+
+  void mouseReleasedEvent() {                                                     //if mouse is released then click is false
+    click = false;
   }
 }
