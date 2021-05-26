@@ -13,13 +13,13 @@ class Flock {
   }
 
   void run() {
-    for (Boid b : boids) {
-      b.run(boids);  // Passing the entire list of boids to each boid individually
+    for (Boid boid : boids) {
+      boid.run(boids);  // Passing the entire list of boids to each boid individually
     }
   }
 
-  void addBoid(Boid b) {
-    boids.add(b);
+  void addBoid(Boid boid) {
+    boids.add(boid);
   }
 
 }

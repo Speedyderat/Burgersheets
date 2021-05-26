@@ -82,11 +82,7 @@ class Boid {
     pushMatrix();
     translate(position.x,position.y);
     rotate(theta);
-    beginShape(TRIANGLES);
-    vertex(0, -r*2);
-    vertex(-r, r*2);
-    vertex(r, r*2);
-    endShape();
+    ellipse(0, -r*2, 5, 5);
     popMatrix();
   }
 
