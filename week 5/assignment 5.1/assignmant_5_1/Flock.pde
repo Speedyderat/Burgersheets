@@ -21,5 +21,4 @@ class Flock {
   void addBoid(Boid boid) {
     boids.add(boid);
   }
-
 }
