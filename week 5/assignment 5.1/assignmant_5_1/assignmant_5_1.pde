@@ -10,6 +10,7 @@
 // Click mouse to add boids into the system
 
 Flock flock;
+Obstacle obstacle;
 
 void setup() {
   size(1000, 750);
@@ -18,11 +19,13 @@ void setup() {
     Boid b = new Boid(width/2, height/2);
     flock.addBoid(b);
   }
+  obstacle = new Obstacle();
 }
 
 void draw() {
   background(255);
   flock.run();
+  obstacle.display();
 
   // Instructions
   fill(0);
