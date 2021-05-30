@@ -7,9 +7,7 @@
 
 class Boid {
 
-  PVector position;
-  PVector velocity;
-  PVector acceleration;
+  PVector position, velocity, acceleration, correction;
   float radius;
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
@@ -29,9 +27,9 @@ class Boid {
   }
 
   void run(ArrayList<Boid> boids) {
+    borders();
     flock(boids);
     update();
-    borders();
     render();
   }
 
@@ -92,13 +90,35 @@ class Boid {
     popMatrix();
   }
 
-  // Wraparound
+  //// Wraparound
+  //void borders() {
+  //  if (position.x < -radius) position.x = width+radius;
+  //  if (position.y < -radius) position.y = height+radius;
+  //  if (position.x > width+radius) position.x = -radius;
+  //  if (position.y > height+radius) position.y = -radius;
+  //}
+
   void borders() {
-    if (position.x < -radius) position.x = width+radius;
-    if (position.y < -radius) position.y = height+radius;
-    if (position.x > width+radius) position.x = -radius;
-    if (position.y > height+radius) position.y = -radius;
-  }
+    if (position.x < -radius+300) {
+      correction = new PVector(maxspeed, velocity.y);
+    } else if (position.x > width +radius -300) {
+      correction = new PVector(-maxspeed, velocity.y);
+    } 
+
+    if (position.y < -radius +300) {
+      correction = new PVector(velocity.x, maxspeed);
+    } else if (position.y > height+radius -300) {
+      correction = new PVector(velocity.x, -maxspeed);
+    } 
+
+    if (correction != null) {
+      correction.normalize();
+      correction.mult(maxspeed);
+      PVector steer = PVector.sub(correction, velocity);
+      steer.limit(maxforce);
+      applyForce(steer);
+    }
+  }  
 
   // Separation
   // Method checks for nearby boids and steers away
