@@ -15,7 +15,7 @@ Obstacle obstacle;
 void setup() {
   size(1000, 750);
   flock = new Flock();  // Add an initial set of boids into the system
-  for (int i = 0; i < 200; i++) {
+  for (int i = 0; i < 50; i++) {
     Boid b = new Boid(width/2, height/2);
     flock.addBoid(b);
   }
