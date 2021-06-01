@@ -12,8 +12,7 @@ class Boid {
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
   float colourR, colourG, colourB;
-  Obstacle obstacle;
-
+  //Obstacle obstacle;
 
   Boid(float x, float y) {
     acceleration = new PVector(0, 0);
@@ -27,9 +26,8 @@ class Boid {
     colourB = random(255);
   }
 
-  void run(ArrayList<Boid> boids) {
-    borders();
-    flock(boids);
+  void run(ArrayList<Boid> boids, Obstacle obstacle) {
+    flock(boids, obstacle);
     update();
     render();
   }
@@ -40,21 +38,24 @@ class Boid {
   }
 
   // We accumulate a new acceleration each time based on three rules
-  void flock(ArrayList<Boid> boids) {
+  void flock(ArrayList<Boid> boids, Obstacle obstacle) {
     PVector sep = separate(boids);   // Separation
     PVector ali = align(boids);      // Alignment
     PVector coh = cohesion(boids);   // Cohesion
-//    PVector avo = avoidance(obstacle);
+    PVector avo = avoidance(obstacle);
+    PVector bor = borders();
     // Arbitrarily weight these forces
     sep.mult(1.5);
     ali.mult(1.0);
     coh.mult(1.0);
-//    avo.mult(1.5);
+    avo.mult(2);
+    bor.mult(1.5);
     // Add the force vectors to acceleration
     applyForce(sep);
     applyForce(ali);
     applyForce(coh);
-//    applyForce(avo);
+    applyForce(avo);
+    applyForce(bor);
   }
 
   // Method to update position
@@ -102,26 +103,29 @@ class Boid {
   //  if (position.y > height+radius) position.y = -radius;
   //}
 
-  void borders() {
-    if (position.x < -radius+300) {
+  PVector borders() {
+    
+    PVector steer = new PVector(0, 0, 0);
+    
+    if (position.x < -radius+50) {
       correction = new PVector(maxspeed, velocity.y);
-    } else if (position.x > width +radius -300) {
+    } else if (position.x > width +radius -50) {
       correction = new PVector(-maxspeed, velocity.y);
     } 
 
-    if (position.y < -radius +300) {
+    if (position.y < -radius +50) {
       correction = new PVector(velocity.x, maxspeed);
-    } else if (position.y > height+radius -300) {
+    } else if (position.y > height+radius -50) {
       correction = new PVector(velocity.x, -maxspeed);
     } 
 
     if (correction != null) {
       correction.normalize();
       correction.mult(maxspeed);
-      PVector steer = PVector.sub(correction, velocity);
+      steer = PVector.sub(correction, velocity);
       steer.limit(maxforce);
-      applyForce(steer);
     }
+    return steer;
   }  
 
   // Separation
@@ -159,12 +163,11 @@ class Boid {
     return steer;
   }
 
-  //// Avoidance
-  //// Method checks for nearby boids and steers away
-
+  // Avoidance
+  // Method checks for nearby boids and steers away
   PVector avoidance (Obstacle obstacle) {
 
-    float desiredseparation = 25.0f;
+    float desiredseparation = obstacle.radiusObstacle;
     PVector steer = new PVector(0, 0, 0);
 
     // For every boid in the system, check if it's too close

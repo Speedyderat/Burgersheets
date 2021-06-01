@@ -5,7 +5,7 @@ class Obstacle {
 
   Obstacle() {
     location = new PVector(random(100, width-100), random(100, height-100));
-    radiusObstacle = random(50, 200);
+    radiusObstacle = random(100, 200);
   }
 
   void display() {

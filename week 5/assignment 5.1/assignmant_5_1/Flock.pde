@@ -14,7 +14,7 @@ class Flock {
 
   void run() {
     for (Boid boid : boids) {
-      boid.run(boids);  // Passing the entire list of boids to each boid individually
+      boid.run(boids, obstacle);  // Passing the entire list of boids to each boid individually
     }
   }
 
