@@ -47,9 +47,9 @@ class Boid {
     // Arbitrarily weight these forces
     sep.mult(1.5);
     ali.mult(1.0);
-    coh.mult(1.0);
-    avo.mult(2);
-    bor.mult(1.5);
+    coh.mult(2);
+    avo.mult(4);
+    bor.mult(2);
     // Add the force vectors to acceleration
     applyForce(sep);
     applyForce(ali);
