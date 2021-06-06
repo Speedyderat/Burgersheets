@@ -8,8 +8,8 @@ class Bob {
   PVector location;
   PVector velocity;
   PVector acceleration;
-  float mass = 24;
-  
+  float mass = 24, timesFactor;
+
   // Arbitrary damping to simulate friction / drag 
   float damping = 0.98;
 
@@ -19,10 +19,11 @@ class Bob {
 
   // Constructor
   Bob(float x, float y) {
-    location = new PVector(x,y);
+    location = new PVector(x, y);
     velocity = new PVector();
     acceleration = new PVector();
     dragOffset = new PVector();
+    timesFactor = 0.25;
   } 
 
   // Standard Euler integration
@@ -40,23 +41,53 @@ class Bob {
     acceleration.add(f);
   }
 
+  void petal() {                                                                                                            //this will create a petal
+    strokeWeight(2);
+    stroke(0);
+    fill (random(255), random(255), random(255));
+    triangle (0, 0, 26.1*timesFactor, 74*timesFactor+3*timesFactor, -26.1*timesFactor, 74*timesFactor+3*timesFactor);
+    arc (0, 75*timesFactor, 52*timesFactor, 52*timesFactor, 0, PI, OPEN);
+  }
+
+  void flowerMiddle() {                                                                                                    //this is the happy state of the flower which is yellow with a smile
+    strokeWeight(2);
+    stroke(0);
+    fill(255, 255, 0);
+    ellipse(0, 0, 100*timesFactor, 100*timesFactor);
+    noFill();
+    arc(0, 15, 40*timesFactor, 25*timesFactor, QUARTER_PI, PI, OPEN);
+    fill(0);
+    ellipse(15*timesFactor, -15*timesFactor, 15*timesFactor, 15*timesFactor);
+    ellipse(-15*timesFactor, -15*timesFactor, 15*timesFactor, 15*timesFactor);
+    line(10*timesFactor, 0, 0, 0);
+  }
 
   // Draw the bob
-  void display() { 
-    stroke(0);
-    strokeWeight(2);
-    fill(175);
-    if (dragging) {
-      fill(50);
+  void display() {
+    pushMatrix();
+    translate(location.x, location.y);                                                                                           //this is to translate all the parts of the flower exept the stem to their given position
+    for (int i = 0; i < 9; i++) {                                                                                          //this creates 9 petals for the flower
+      petal();
+      rotate(0.7);
     }
-    ellipse(location.x,location.y,mass*2,mass*2);
-  } 
+    flowerMiddle();
+    popMatrix();
+  }
+
+  //  stroke(0);
+  //  strokeWeight(2);
+  //  fill(175);
+  //  if (dragging) {
+  //    fill(50);
+  //  }
+  //  ellipse(location.x,location.y,mass*2,mass*2);
+  //} 
 
   // The methods below are for mouse interaction
 
   // This checks to see if we clicked on the mover
   void clicked(int mx, int my) {
-    float d = dist(mx,my,location.x,location.y);
+    float d = dist(mx, my, location.x, location.y);
     if (d < mass) {
       dragging = true;
       dragOffset.x = location.x-mx;

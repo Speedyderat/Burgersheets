@@ -18,16 +18,16 @@ void setup() {
   smooth();
   // Create objects at starting location
   // Note third argument in Spring constructor is "rest length"
-  spring = new Spring(width/2,10,100); 
+  spring = new Spring(width/2,200,100); 
   bob = new Bob(width/2,100); 
 
 }
 
 void draw()  {
   background(255); 
-  // Apply a gravity force to the bob
-  PVector gravity = new PVector(0,2);
-  bob.applyForce(gravity);
+  //// Apply a gravity force to the bob
+  //PVector gravity = new PVector(0,2);
+  //bob.applyForce(gravity);
   
   // Connect the bob to the spring (this calculates the force)
   spring.connect(bob);
