@@ -49,7 +49,7 @@ class Bob {
     arc (0, 75*timesFactor, 52*timesFactor, 52*timesFactor, 0, PI, OPEN);
   }
 
-  void flowerMiddle() {                                                                                                    //this is the happy state of the flower which is yellow with a smile
+  void flowerMiddle() {                                                                                                    //this is the middle of the flower which is yellow with a smile
     strokeWeight(2);
     stroke(0);
     fill(255, 255, 0);
@@ -74,15 +74,6 @@ class Bob {
     popMatrix();
   }
 
-  //  stroke(0);
-  //  strokeWeight(2);
-  //  fill(175);
-  //  if (dragging) {
-  //    fill(50);
-  //  }
-  //  ellipse(location.x,location.y,mass*2,mass*2);
-  //} 
-
   // The methods below are for mouse interaction
 
   // This checks to see if we clicked on the mover
@@ -90,8 +81,8 @@ class Bob {
     float d = dist(mx, my, location.x, location.y);
     if (d < mass) {
       dragging = true;
-      dragOffset.x = location.x-mx;
       dragOffset.y = location.y-my;
+      dragOffset.x = location.x-mx;
     }
   }
 
@@ -101,8 +92,8 @@ class Bob {
 
   void drag(int mx, int my) {
     if (dragging) {
-      location.x = mx + dragOffset.x;
       location.y = my + dragOffset.y;
+      location.x = mx + dragOffset.x;
     }
   }
 }
