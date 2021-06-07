@@ -8,13 +8,14 @@ class Bob {
   PVector location;
   PVector velocity;
   PVector acceleration;
+  PVector windForce;
   float mass = 24, timesFactor;
 
   // Arbitrary damping to simulate friction / drag 
   float damping = 0.98;
 
   // For mouse interaction
-  PVector dragOffset;
+  PVector mouseOffset;
   boolean dragging = false;
 
   // Constructor
@@ -22,7 +23,7 @@ class Bob {
     location = new PVector(x, y);
     velocity = new PVector();
     acceleration = new PVector();
-    dragOffset = new PVector();
+    mouseOffset = new PVector();
     timesFactor = 0.25;
   } 
 
@@ -66,7 +67,7 @@ class Bob {
   void display() {
     pushMatrix();
     translate(location.x, location.y);                                                                                           //this is to translate all the parts of the flower exept the stem to their given position
-    for (int i = 0; i < 9; i++) {                                                                                          //this creates 9 petals for the flower
+    for (int i = 0; i < 9; i++) {                                                                                                //this creates 9 petals for the flower
       petal();
       rotate(0.7);
     }
@@ -77,12 +78,14 @@ class Bob {
   // The methods below are for mouse interaction
 
   // This checks to see if we clicked on the mover
-  void clicked(int mx, int my) {
-    float d = dist(mx, my, location.x, location.y);
+  void clicked(PVector m) {
+    float d = dist(m.x, m.y, location.x, location.y);
+    mouseOffset.y = location.y-m.y;
+    mouseOffset.x = location.x-m.x;
     if (d < mass) {
       dragging = true;
-      dragOffset.y = location.y-my;
-      dragOffset.x = location.x-mx;
+    } else {
+      //windForce = new PVector(mouseOffset.x, mouseOffset.y);
     }
   }
 
@@ -90,10 +93,10 @@ class Bob {
     dragging = false;
   }
 
-  void drag(int mx, int my) {
+  void drag(PVector m) {
     if (dragging) {
-      location.y = my + dragOffset.y;
-      location.x = mx + dragOffset.x;
+      location.y = m.y + mouseOffset.y;
+      location.x = m.x + mouseOffset.x;
     }
   }
 }

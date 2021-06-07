@@ -42,7 +42,7 @@ class Spring {
   void constrainLength(Bob b, float minlen, float maxlen) {
     //vector pointing from Bob to Anchor 
     PVector dir = PVector.sub(b.location, anchor);    
-    float d = dir.mag();
+    float d = dir.mag(); //ANSWER MARINA: you are probably talking about this d in which case yes this d is different from the distance, it gets created in this void and so can online be used in here
     // Is it too short?
     if (d < minlen) {
       dir.normalize();
