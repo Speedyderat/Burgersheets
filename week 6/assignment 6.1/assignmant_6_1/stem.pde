@@ -23,7 +23,7 @@ class Spring {
   // Calculate spring force -> our implementation of Hooke’s Law.
   void connect(Bob b) {
     // Get a Vector pointing from anchor to bob location
-    PVector force = PVector.sub(b.location, b.initialLocation);
+    PVector force = PVector.sub(b.location, anchor);
     // What is distance
     float distance = force.mag();                                       //NOTE: this is what we need to change, now it uses force, which is calculated from the anchor to the bob, but we need it from a certain point on the left or right side instead
     // Stretch is difference between current distance and rest length   ASK  JASPER: if this "d" is distance, is the one below something else? it doenst get underlined when i change it
@@ -58,7 +58,7 @@ class Spring {
       // Is it too long?
     } else if (d > maxlen) {
       dir.normalize();
-      dir.mult(maxlen);
+      dir.mult(maxlen); //?
       
       // Reset location and stop from moving (not realistic physics)
       // Keep location within constraint

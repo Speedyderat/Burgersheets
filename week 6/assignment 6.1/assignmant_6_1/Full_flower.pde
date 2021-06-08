@@ -29,7 +29,7 @@ class Flower {
     // Connect the bob to the spring (this calculates the force)
     spring.connect(bob);
     // Constrain spring distance between min and max
-//    spring.constrainLength(bob, 30, 200);
+    spring.constrainLength(bob, 30, 200);
 
     // Update bob
     bob.update();

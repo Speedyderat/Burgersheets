@@ -9,7 +9,7 @@ class Bob {
   PVector initialLocation;
   PVector velocity;
   PVector acceleration;
-  PVector windForce;
+  //PVector windForce;
   float mass = 24, timesFactor;
 
   // Arbitrary damping to simulate friction / drag 
