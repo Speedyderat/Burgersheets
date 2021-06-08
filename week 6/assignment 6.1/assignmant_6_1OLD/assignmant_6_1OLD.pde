@@ -12,7 +12,7 @@ Flower flower;
 void setup() {
   size(800, 500);
   smooth();
-  flower = new Flower(new PVector(width/2, height/2), 100);//-150
+  flower = new Flower(new PVector(width/2, height-150), 100);
 }
 
 void draw() {

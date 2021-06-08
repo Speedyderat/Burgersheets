@@ -6,7 +6,6 @@
 
 class Bob { 
   PVector location;
-  PVector initialLocation;
   PVector velocity;
   PVector acceleration;
   PVector windForce;
@@ -22,7 +21,6 @@ class Bob {
   // Constructor
   Bob(float x, float y) {
     location = new PVector(x, y);
-    initialLocation = location;
     velocity = new PVector();
     acceleration = new PVector();
     mouseOffset = new PVector();
@@ -44,8 +42,6 @@ class Bob {
     acceleration.add(f);
   }
 
-
-  // drawing of the flowerhead
   void petal() {                                                                                                            //this will create a petal
     strokeWeight(2);
     stroke(0);

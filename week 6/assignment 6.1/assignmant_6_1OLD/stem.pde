@@ -11,7 +11,7 @@ class Spring {
   PVector anchor;
 
   // Rest length and spring constant
-  float len, y;
+  float len;
   float k = 0.2;
 
   // Constructor, initiallizes the anchor point and rest lenght l
@@ -23,7 +23,7 @@ class Spring {
   // Calculate spring force -> our implementation of Hooke’s Law.
   void connect(Bob b) {
     // Get a Vector pointing from anchor to bob location
-    PVector force = PVector.sub(b.location, b.initialLocation);
+    PVector force = PVector.sub(b.location, anchor);
     // What is distance
     float distance = force.mag();                                       //NOTE: this is what we need to change, now it uses force, which is calculated from the anchor to the bob, but we need it from a certain point on the left or right side instead
     // Stretch is difference between current distance and rest length   ASK  JASPER: if this "d" is distance, is the one below something else? it doenst get underlined when i change it
@@ -40,26 +40,21 @@ class Spring {
 
   // Constrain the distance between bob and anchor between min and max
   void constrainLength(Bob b, float minlen, float maxlen) {
-    
-    //vector pointing from Bob to anchor 
+    //vector pointing from Bob to Anchor 
     PVector dir = PVector.sub(b.location, anchor);    
     float d = dir.mag(); //ANSWER MARINA: you are probably talking about this d in which case yes this d is different from the distance, it gets created in this void and so can online be used in here
-    
     // Is it too short?
     if (d < minlen) {
       dir.normalize();
       dir.mult(minlen);
-      
       // Reset location and stop from moving (not realistic physics)
       // Keep location within constraint
       b.location = PVector.add(anchor, dir);
       b.velocity.mult(0);
-      
       // Is it too long?
     } else if (d > maxlen) {
       dir.normalize();
       dir.mult(maxlen);
-      
       // Reset location and stop from moving (not realistic physics)
       // Keep location within constraint
       b.location = PVector.add(anchor, dir);
