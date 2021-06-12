@@ -9,7 +9,7 @@ class Flower {
   PVector location;
 
   Flower(PVector l, int restLength) {
-    location = l.copy();                                                                  //location from the main class
+    location = l.get();                                                                  //location from the main class
 
     // Create objects at location
     spring = new Spring(location.x, location.y+restLength, restLength);                                 // Note third argument is "rest length"

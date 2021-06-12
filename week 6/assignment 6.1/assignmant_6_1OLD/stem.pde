@@ -11,7 +11,7 @@ class Spring {
   PVector anchor;
 
   // Rest length and spring constant
-  float len;
+  float len, y;
   float k = 0.2;
 
   // Constructor, initiallizes the anchor point and rest lenght l
@@ -40,21 +40,26 @@ class Spring {
 
   // Constrain the distance between bob and anchor between min and max
   void constrainLength(Bob b, float minlen, float maxlen) {
-    //vector pointing from Bob to Anchor 
+    
+    //vector pointing from Bob to anchor 
     PVector dir = PVector.sub(b.location, anchor);    
     float d = dir.mag(); //ANSWER MARINA: you are probably talking about this d in which case yes this d is different from the distance, it gets created in this void and so can online be used in here
+    
     // Is it too short?
     if (d < minlen) {
       dir.normalize();
       dir.mult(minlen);
+      
       // Reset location and stop from moving (not realistic physics)
       // Keep location within constraint
       b.location = PVector.add(anchor, dir);
       b.velocity.mult(0);
+      
       // Is it too long?
     } else if (d > maxlen) {
       dir.normalize();
-      dir.mult(maxlen);
+      dir.mult(maxlen); //?
+      
       // Reset location and stop from moving (not realistic physics)
       // Keep location within constraint
       b.location = PVector.add(anchor, dir);
