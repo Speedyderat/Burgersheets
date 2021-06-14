@@ -8,8 +8,7 @@ void setup() {
 }
 
 void draw() {
-
-  game.display();
+  game.run();
 }
 
 void mouseDragged() {                                                              //dragging the ball in the catapult
