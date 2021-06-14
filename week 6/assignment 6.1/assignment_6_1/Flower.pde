@@ -18,7 +18,7 @@ class Flower {
     damping = 0.999;                                                                                     //Damping speed
     bowing = 1.030;
     angle = bowing*PI;                                                                                  //Angle, whill will decide how much the plant bows
-    parts = 10;                                                                                         //how many parts the stem has
+    parts = 1;                                                                                         //how many parts the stem has
     plantLength = 200/parts;                                                                            //how long the stem is
     timesFactor = 0.75;                                                                                 //sizing of the flowerhead
   }
