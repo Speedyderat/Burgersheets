@@ -14,9 +14,9 @@ class Flower {
     origin = new PVector(0, 0);
     location = new PVector(0, 0); 
     
-    friction = 0.1;                                                                                     //Determines speed of plant moving
+    friction = 0.5;                                                                                     //Determines speed of plant moving
     damping = 0.999;                                                                                     //Damping speed
-    bowing = 1.030;
+    bowing = 1.050;
     angle = bowing*PI;                                                                                  //Angle, whill will decide how much the plant bows
     parts = 1;                                                                                         //how many parts the stem has
     plantLength = 200/parts;                                                                            //how long the stem is

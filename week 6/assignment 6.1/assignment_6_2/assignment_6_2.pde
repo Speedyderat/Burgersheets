@@ -1,5 +1,6 @@
-Flower[] flowers = new Flower[3];
+/* This program has been written by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 6.2 from module 4 CreaTe 2021 */
 
+Flower[] flowers = new Flower[3];
 
 void setup() {
   size(800, 800);
