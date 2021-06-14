@@ -1,18 +1,15 @@
-/* Topic 6, Assignment 1
- * Mass-Spring-Damper
- * By Juno Reuvers, and Lot van der Galiën
-*/
+/* This program has been written by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 6 from module 4 CreaTe 2021 */
 
 
-Penis penis;
+Flower flower;
 
 void setup() {
   size(640, 640);
-  penis = new Penis();
+  flower = new Flower();
 }
 
 void draw() {
   background(120, 180, 255);
-  penis.update();
-  penis.render();
+  flower.update();
+  flower.render();
 }

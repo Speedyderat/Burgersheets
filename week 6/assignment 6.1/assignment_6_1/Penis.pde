@@ -1,27 +1,21 @@
-class Penis
+class Flower
 {
-
-  //PENIS variables
-  float widthTesticle, heightTesticle;
-  float timesFactor;
-  //MASS-SPRING DAMPER variables
+  //MSD variables
   float angle, position, torque, friction, mass, acceleration, velocity, constant;
+  //flower variables
+  float timesFactor;
 
-  Penis()
+  Flower()
   {
-    widthTesticle = 40;
-    heightTesticle = 42;
-    mass = 0.016;
-    acceleration = 0.030;
+    mass = 0.01;
+    acceleration = 0.05;
     constant = 70;
     timesFactor = 0.75;
   }
 
   void update()
   {
-    //VELOCITY updated by acceleration
     velocity += acceleration;
-    //POSITION updated by velocity
     position += velocity;
     //TORQUE = 1/c ∫ω dt, where c = 100
     torque = 1/constant * position;
@@ -31,13 +25,13 @@ class Penis
     acceleration = -(torque + friction + mass); 
 
     //ANGLE
-    angle = 0.8*HALF_PI + position +(mass*constant);
+    angle = -1.5*HALF_PI + position +(mass*constant);
   }
 
   void render()
   {
     pushMatrix();
-    translate(width/4, height/2);
+    translate(width/2, height-5);
     rotate(angle);
     //Testicles
     
@@ -45,7 +39,7 @@ class Penis
     stroke(51, 100, 0);
     strokeWeight(10);
     line(0, 0, 100, 100);
-    endShape();
+    translate(100, 100);
     for (int i = 0; i < 9; i++) {                                                                      //This creates 9 petals for the flower
       petal();
       rotate(0.7);
