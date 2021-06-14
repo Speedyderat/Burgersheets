@@ -1,3 +1,5 @@
+/* This is the objects class, in here the objects are described and how they interact with the ball ( in this case with objects we mean the borders of the world and the wall) */
+
 class Objects {
 
   Ball ball;

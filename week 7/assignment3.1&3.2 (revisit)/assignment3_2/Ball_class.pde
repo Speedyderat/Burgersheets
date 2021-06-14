@@ -1,4 +1,5 @@
 /* This is the ball class for the catapult game, in here the physics of the ball are described, after it has been launched by the catapult*/
+
 class Ball {
 
   PVector location, velocity, gravity, friction;

@@ -1,3 +1,5 @@
+/* In here the catapult shooting game comes together before it can get played in the main code so it doesn not flood the main code with unnecessary info */
+
 class Game {
 
   Ball ball;
