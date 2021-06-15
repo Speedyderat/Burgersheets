@@ -37,12 +37,15 @@ class Objects {
       bounce = true;
       ball.location.x = wallLoc.x;
       ball.velocity.x = -ball.velocity.x * .8;                                           //ball slows down and reverses its direction
-    } else if ((ball.location.x > wallLoc.x - pole.x*2) && (ball.location.y < wallLoc.y-pole.y)) {                                                 //if comes from the left side and passes over the pole
+      
+    } else if ((ball.location.x > wallLoc.x - pole.x*2) && (ball.location.y < wallLoc.y-pole.y)) {                                                 //if ball comes from the left side and passes over the pole
       pass = true;                                                                       //ball has passed the pole
+      
     } else if (!bounce && pass && (ball.location.x < wallLoc.x + pole.x*2) && (ball.location.y > wallLoc.y-pole.y)) {                              //if ball comes from the right side and bounces on the back of the pole
       bounce = true;
       ball.location.x = wallLoc.x + 20;
       ball.velocity.x = -ball.velocity.x * .8;                                           //ball slows down and reverses its direction
+      
     } else if (ball.location.x < wallLoc.x -20) {                                                                                                  //if ball is on the left of the pole 
       pass = false;                                                                      //ball has not passed the pole
     }
