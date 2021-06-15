@@ -17,7 +17,7 @@ class Flower {
 
     friction = 0.1;                                                                                     //Determines speed of plant moving
     damping = 0.999;                                                                                     //Damping speed
-    bowing = 1.005;
+    bowing = 1.030;
     angle = bowing*PI;                                                                                  //Angle, whill will decide how much the plant bows
     parts = 25;                                                                                         //how many parts the stem has
     plantLength = 200/parts;                                                                            //how long the stem is
