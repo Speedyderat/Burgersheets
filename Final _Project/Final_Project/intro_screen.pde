@@ -1,9 +1,9 @@
-class introScreen {
+class IntroScreen {
 
   int stage;
   boolean done;
 
-  introScreen() {
+  IntroScreen() {
     stage = 0;
   }
 

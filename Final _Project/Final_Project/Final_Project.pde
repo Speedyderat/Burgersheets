@@ -1,9 +1,13 @@
 //beep
 
-introScreen introscreen;
+IntroScreen introscreen;
+Game game;
+OutroScreen outroscreen;
 
 void setup() {
-  introscreen = new introScreen();
+  introscreen = new IntroScreen();
+  game = new Game();
+  outroscreen = new OutroScreen();
 }
 
 void draw() {
@@ -11,5 +15,5 @@ void draw() {
 }
 
 void mouseClicked() {
-  introscreen.mouseClickEvent()
+  introscreen.mouseClickEvent();
 }
