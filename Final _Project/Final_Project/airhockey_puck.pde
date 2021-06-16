@@ -6,7 +6,7 @@ class Puck {
   int puckState;
 
   Puck() {
-    location = new PVector(width, height);
+    location = new PVector(width/2, height/2);
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
   }
@@ -18,7 +18,7 @@ class Puck {
   }
 
   void display() {
-    circle(location.x, location.y, 75);
+    //circle(location.x, location.y, 75);
   }
 
   //ball inside of the catapult physics
