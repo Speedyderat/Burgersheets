@@ -4,11 +4,15 @@ class Puck {
   PVector mouse, launchLocation;
 
   int puckState;
+  color puckColor;
 
   Puck() {
     location = new PVector(width/2, height/2);
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
+    
+    puckState = 0;
+    puckColor = color(250, 200, 100);
   }
 
   void physics() {
@@ -18,11 +22,13 @@ class Puck {
   }
 
   void display() {
-    //circle(location.x, location.y, 75);
+    fill (puckColor);
+    circle(location.x, location.y, 50);
   }
 
-  //ball inside of the catapult physics
-  void update() {
+  
+  //puck when starting off
+  void launchStart() {
     if (puckState == 0) {                                                           //ball state zero indicates the ball is in its standard position in the catapult
       location.set(launchLocation);
     } else if (puckState == 1) {                                                    //ball state one indicates that the ball will follow the mouse untill the mouse button is released
@@ -30,9 +36,9 @@ class Puck {
     }
   }
 
-  void mouseDraggedEvent(PVector mouseLocation) {                                       //when the ball is being dragged the ball is in state one
+  void mouseDraggedEvent(PVector mouseLocation) {                                                         //when the ball is being dragged the ball is in state one
     puckState = 1;
-    mouse = mouseLocation;                                                              //the location of the mouse is passed through to "mouse"
+    mouse = mouseLocation;                                                                                //the location of the mouse is passed through to "mouse"
     velocity.set(- 0.2 * (mouse.x - launchLocation.x), - 0.2 * (mouse.y - launchLocation.y));             //the velocity gets calculated and reversed, ready for launch
   }
 
