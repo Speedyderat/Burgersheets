@@ -18,6 +18,7 @@ class IntroScreen {
   }
 
   void part1() { // character moves into the screen from the left
+  
   }
   void part2() { //character stays in the middle of the screen while the name of the game pops up
   }  
