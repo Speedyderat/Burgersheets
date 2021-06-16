@@ -28,7 +28,7 @@ class Player2 {
     fill (light);                             //lighter
     circle(xLoc, yLoc, 75);
     fill (dark);                               //darker
-    circle(xLoc + 4, yLoc - 4, 40);
+    circle(xLoc + 4, yLoc + 4, 40);
     fill (main);                             //main
     circle(xLoc, yLoc, 40);
   }
