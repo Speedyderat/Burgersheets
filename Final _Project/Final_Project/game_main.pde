@@ -1,13 +1,14 @@
 class Game {
 
   Stadium stadium;
-  Player player, player2;
+  Player player;
+  Player2 player2;
   Puck puck;
 
   Game() {
     stadium = new Stadium();
     player = new Player();
-    player2 = new Player();
+    player2 = new Player2();
     puck = new Puck();
   }
 
