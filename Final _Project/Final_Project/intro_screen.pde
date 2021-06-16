@@ -8,6 +8,7 @@ class IntroScreen {
   }
 
   void display() {
+    background();
     if (stage == 0) {
       part1();
     } else if (stage == 1) {
@@ -22,6 +23,9 @@ class IntroScreen {
   void part2() { //character stays in the middle of the screen while the name of the game pops up
   }  
   void part3() { //character moves to the right side until it has reached it
+  }
+
+  void background() { //the continuesly moving background
   }
 
   boolean introdone() { //when the character has reached the edge the intro is done
