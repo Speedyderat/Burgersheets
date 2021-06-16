@@ -1,3 +1,9 @@
+// Physics inspired by:
+// Daniel Shiffman's Nature Of Code
+// https://natureofcode.com/book/chapter-3-oscillation/
+// Greg Lewin's Mass-spring-damper Tutorial
+// https://youtu.be/_SYfzEGL7xA
+
 class Flower
 {
   //MSD variables
@@ -17,25 +23,24 @@ class Flower
   {
     velocity += acceleration;
     position += velocity;
-    //TORQUE = 1/c ∫ω dt, where c = 100
+    //torque
     torque = 1/constant * position;
-    //FRICTION = f * ω, where f = 0.05
+    //friction
     friction = 0.05 * velocity;     
-    //ACCELERATION = -(T+F+m) (Law of d’ Alembert)
+    //acceleration 
     acceleration = -(torque + friction + mass); 
 
     //ANGLE
     angle = -1.5*HALF_PI + position +(mass*constant);
   }
 
-  void render()
+  void display()
   {
     pushMatrix();
     translate(width/2, height-5);
     rotate(angle);
-    //Testicles
     
-    //Body
+    //Flower body
     stroke(51, 100, 0);
     strokeWeight(10);
     line(0, 0, 100, 100);
@@ -49,7 +54,6 @@ class Flower
   }
 
   // drawing of the flowerhead
-
   void petal() {                                                                                       //This will create a petal
     strokeWeight(2);
     stroke(0);
