@@ -7,6 +7,11 @@ class Stadium {
   }
 
   void underground() {
-    image(underground, 0, 0);
+    image(underground, 0, 0, width, height);
+  }
+  
+  void borderPhysics(){
+  //if (ball.position <= 10)
+  //or (ball.position >= width
   }
 }

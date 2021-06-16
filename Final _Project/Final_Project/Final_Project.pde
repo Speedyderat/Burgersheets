@@ -13,6 +13,7 @@ void setup() {
 
 void draw() {
   introscreen.display();
+  game.display();
 }
 
 void mouseClicked() {
