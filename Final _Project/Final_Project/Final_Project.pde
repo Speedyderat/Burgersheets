@@ -7,7 +7,6 @@ void setup() {
 }
 
 void draw() {
-  if stage
   introscreen.display();
 }
 
