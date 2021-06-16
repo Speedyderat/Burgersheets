@@ -13,7 +13,7 @@ void setup() {
   game = new Game();
   outroscreen = new OutroScreen();
   
-  stage = 0;
+  stage = 1;
 }
 
 void draw() {

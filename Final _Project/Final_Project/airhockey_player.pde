@@ -1,19 +1,35 @@
 class Player {
+  float xLoc;
+  float yLoc; 
+  float sizeMain;
+  float sizeLight;
+  float sizeDark;
+  color main; 
+  color light; 
+  color dark; 
 
   Player() {
+    xLoc = width/4;
+    yLoc = height/2; 
+    sizeMain = 90;
+    sizeLight = 75;
+    sizeDark = 40;
+    main = color(185, 201, 91); 
+    light = color(209, 228, 102); 
+    dark = color(150, 163, 73);
   }
   void update() {
   }
   void display() {
     // Yellow player
     noStroke();
-    fill (185, 201, 91);                      //main
-    circle(width/2, height/2, 90);
-    fill (209, 228, 102);                     //lighter
-    circle(width/2, height/2, 75);
-    fill (150, 163, 73);                      //dadrjer
-    circle(width/2 - 4, height/2 + 4, 40);
-    fill (185, 201, 91);                      //main
-    circle(width/2, height/2, 40);
+    fill (main);                            //main
+    circle(xLoc, yLoc, sizeMain);
+    fill (light);                           //lighter
+    circle(xLoc, yLoc, sizeLight);
+    fill (dark);                            //darker (f u)
+    circle(xLoc - 4, yLoc + 4, sizeDark);
+    fill (main);                            //main
+    circle(xLoc, yLoc, sizeDark);
   }
 }
