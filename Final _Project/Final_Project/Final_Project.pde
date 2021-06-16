@@ -1,1 +1,9 @@
-beep
+//beep
+
+void setup() {
+
+}
+
+void draw() {
+
+}
