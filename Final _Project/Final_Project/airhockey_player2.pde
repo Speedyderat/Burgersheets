@@ -1,6 +1,6 @@
 class Player2 {
   PVector location;
-  float sizeMain, sizeLight, sizeDark;
+  float sizeMain, sizeLight, sizeDark, xSpeed, ySpeed, speedWSAD;
   color main, light, dark; 
 
   Player2() {
@@ -8,6 +8,9 @@ class Player2 {
     sizeMain = 90;
     sizeLight = 75;
     sizeDark = 40;
+    xSpeed = 0;
+    ySpeed = 0; 
+    speedWSAD =7;
     main = color(113, 209, 151); 
     light = color(128, 237, 172); 
     dark = color(78, 145, 105);
@@ -25,5 +28,45 @@ class Player2 {
     circle(location.x + 4, location.y + 4, 40);
     fill (main);                             //main
     circle(location.x, location.y, 40);
+  }
+
+  void Player2keysPressedEvent() {
+    if (key==CODED)
+    {
+      if (keyCode==UP)
+      {
+        ySpeed = -speedWSAD;
+      }
+
+      if (keyCode==DOWN)
+      {
+        ySpeed = speedWSAD;
+      }
+
+      if (keyCode==LEFT)
+      {
+        xSpeed = -speedWSAD;
+      }
+
+      if (keyCode==RIGHT)
+      {
+        xSpeed = speedWSAD;
+      }
+    }
+  }
+
+  void Player2keysReleasedEvent() {
+    if (key==CODED)
+    {
+      if (keyCode==UP || keyCode==DOWN)
+      {
+        ySpeed = 0;
+      }
+
+      if (keyCode==LEFT || keyCode==RIGHT)
+      {
+        xSpeed = 0;
+      }
+    }
   }
 }
