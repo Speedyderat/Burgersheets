@@ -27,6 +27,7 @@ class Game {
     player.collision(puck);
     player2.collision(puck);
     puck.run();
+    stadium.borderPhysics(puck);
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
   }
