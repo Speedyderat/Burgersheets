@@ -11,8 +11,8 @@ class Player {
     sizeLight = 75;
     sizeDark = 40;
     xSpeed = 0;
-    ySpeed = 5; 
-    speedWSAD = 7;
+    ySpeed = 0; 
+    speedWSAD = 25;
     main = color(185, 201, 91); 
     light = color(209, 228, 102); 
     dark = color(150, 163, 73);
@@ -26,7 +26,6 @@ class Player {
   void update() {
     location.x = location.x + xSpeed;
     location.y = location.y + ySpeed;
-    println(ySpeed);
   }
 
   void display() {
@@ -41,9 +40,6 @@ class Player {
     fill (main);                            //main
     circle(location.x, location.y, sizeDark);
   }
-
-  //void collision(Puck localPuck){
-  //}
 
   void keysPressedEvent() {
     if (key=='w')
@@ -71,7 +67,6 @@ class Player {
     if (key=='w' || key=='s')
     {
       ySpeed = 0;
-      println("caught you bitch");
     }
 
     if (key=='a' || key=='d')
@@ -79,4 +74,7 @@ class Player {
       xSpeed = 0;
     }
   }
+
+  //void collision(Puck localPuck){
+  //}
 }
