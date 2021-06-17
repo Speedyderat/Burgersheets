@@ -26,6 +26,9 @@ class Puck {
     circle(location.x, location.y, 50);
   }
 
+  void reset() {
+    puckState = 0;
+  }
 
   //puck when starting off
   void launchStart() {
