@@ -4,7 +4,7 @@ class Game {
   Player player;
   Player2 player2;
   Puck puck;
-  
+
   boolean done; 
 
   Game() {
@@ -12,7 +12,7 @@ class Game {
     player = new Player();
     player2 = new Player2();
     puck = new Puck();
-    
+
     done = false;
   }
 
@@ -33,7 +33,13 @@ class Game {
 
     return done;
   }
-  void keypressedevet
-  player.keypressevent
-  player2
+
+  void keyPressedEvent() {
+    player.keysPressedEvent();
+    player2.keysPressedEvent();
+  }
+  void keysReleasedEvent() {
+    player.keysReleasedEvent();
+    player2.keysReleasedEvent();
+  }
 }

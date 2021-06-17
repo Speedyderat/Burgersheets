@@ -30,7 +30,7 @@ class Player2 {
     circle(location.x, location.y, 40);
   }
 
-  void Player2keysPressedEvent() {
+  void keysPressedEvent() {
     if (key==CODED)
     {
       if (keyCode==UP)
@@ -55,7 +55,7 @@ class Player2 {
     }
   }
 
-  void Player2keysReleasedEvent() {
+  void keysReleasedEvent() {
     if (key==CODED)
     {
       if (keyCode==UP || keyCode==DOWN)

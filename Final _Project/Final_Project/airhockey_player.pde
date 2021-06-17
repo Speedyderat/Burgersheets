@@ -39,7 +39,7 @@ class Player {
   //void collision(Puck localPuck){
   //}
 
-  void PlayerkeysPressedEvent() {
+  void keysPressedEvent() {
     if (key=='w')
     {
       ySpeed = -speedWSAD;
@@ -61,7 +61,7 @@ class Player {
     }
   }
 
-  void PlayerkeysReleasedEvent() {
+  void keysReleasedEvent() {
     if (key=='w' || key=='s')
     {
       ySpeed = 0;

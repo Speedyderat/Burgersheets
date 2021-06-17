@@ -38,5 +38,7 @@ void mouseClicked() {
   }
 }
 
-void keypressed
-game.keypressevent
+void keyPressed(){
+game.keyPressedEvent();
+game.keysReleasedEvent();
+}

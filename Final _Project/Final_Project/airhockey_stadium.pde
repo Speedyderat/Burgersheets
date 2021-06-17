@@ -25,9 +25,9 @@ class Stadium {
     }
   }
   
-  void goal();
-  if ((puck.location.y >= uppergoal) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
-  puck.reset();
-  //game.score +1;
-  }
+  //void goal();
+  //if ((puck.location.y >= uppergoal) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
+  //puck.reset();
+  ////game.score +1;
+  //}
 }
