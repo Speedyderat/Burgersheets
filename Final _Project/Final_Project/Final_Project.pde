@@ -29,7 +29,7 @@ void draw() {
 
 void stagechecker() {
   introscreen.introdone();
-  game.gamedone():
+  game.gamedone();
 }
 
 void mouseClicked() {

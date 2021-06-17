@@ -29,7 +29,7 @@ class Game {
     //details, maybe the railing in the middle, class stadium
   }
 
-  boolean introdone() { //when the character has reached the edge the intro is done
+  boolean gamedone() { //when the character has reached the edge the intro is done
 
     return done;
   }
