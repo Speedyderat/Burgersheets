@@ -18,12 +18,12 @@ class Player {
     // Yellow player
     noStroke();
     fill (main);                            //main
-    circle(xLoc, yLoc, sizeMain);
+    circle(location.x, location.y, sizeMain);
     fill (light);                           //lighter
-    circle(xLoc, yLoc, sizeLight);
+    circle(location.x, location.y, sizeLight);
     fill (dark);                            //darker (f u)
-    circle(xLoc - 4, yLoc + 4, sizeDark);
+    circle(location.x - 4, location.y + 4, sizeDark);
     fill (main);                            //main
-    circle(xLoc, yLoc, sizeDark);
+    circle(location.x, location.y, sizeDark);
   }
 }
