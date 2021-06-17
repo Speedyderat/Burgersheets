@@ -33,6 +33,10 @@ class Game {
 
     return done;
   }
+  
+  void mouseDraggedEvent(PVector mouseLocation){
+  puck.mouseDraggedEvent(mouseLocation);
+  }
 
   void keyPressedEvent() {
     player.keysPressedEvent();
