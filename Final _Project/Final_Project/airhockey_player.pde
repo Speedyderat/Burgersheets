@@ -1,16 +1,10 @@
 class Player {
-  float xLoc;
-  float yLoc; 
-  float sizeMain;
-  float sizeLight;
-  float sizeDark;
-  color main; 
-  color light; 
-  color dark; 
+  PVector location;
+  float sizeMain, sizeLight, sizeDark;
+  color main, light, dark; 
 
   Player() {
-    xLoc = width/4;
-    yLoc = height/2; 
+    location = new PVector(width/4, height/2);
     sizeMain = 90;
     sizeLight = 75;
     sizeDark = 40;
