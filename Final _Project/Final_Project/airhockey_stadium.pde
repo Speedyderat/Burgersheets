@@ -28,7 +28,7 @@ class Stadium {
   void goal(Puck puck) {
     if ((puck.location.y >= uppergoal) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
       puck.reset();
-      game.score +1;
+      //game.score +1;
     }
   }
 }

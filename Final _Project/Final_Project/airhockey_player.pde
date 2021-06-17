@@ -11,7 +11,7 @@ class Player {
     sizeLight = 75;
     sizeDark = 40;
     xSpeed = 0;
-    ySpeed = 0; 
+    ySpeed = 5; 
     speedWSAD = 7;
     main = color(185, 201, 91); 
     light = color(209, 228, 102); 
@@ -26,6 +26,7 @@ class Player {
   void update() {
     location.x = location.x + xSpeed;
     location.y = location.y + ySpeed;
+    println(ySpeed);
   }
 
   void display() {
@@ -70,6 +71,7 @@ class Player {
     if (key=='w' || key=='s')
     {
       ySpeed = 0;
+      println("caught you bitch");
     }
 
     if (key=='a' || key=='d')

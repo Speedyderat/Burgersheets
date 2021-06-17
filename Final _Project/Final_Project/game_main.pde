@@ -38,6 +38,7 @@ class Game {
     player.keysPressedEvent();
     player2.keysPressedEvent();
   }
+  
   void keysReleasedEvent() {
     player.keysReleasedEvent();
     player2.keysReleasedEvent();
