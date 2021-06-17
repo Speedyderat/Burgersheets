@@ -38,6 +38,14 @@ void mouseClicked() {
   }
 }
 
+void mouseDragged() {
+  introscreen.mouseClickEvent();
+}
+
+void mouseReleased() {
+  game.mouseDraggedEvent(new PVector(mouseX, mouseY));
+}
+
 void keyPressed() {
   game.keyPressedEvent();
 }
