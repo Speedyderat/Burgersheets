@@ -12,15 +12,20 @@ class Player {
     sizeDark = 40;
     xSpeed = 0;
     ySpeed = 0; 
-    speedWSAD =7;
+    speedWSAD = 7;
     main = color(185, 201, 91); 
     light = color(209, 228, 102); 
     dark = color(150, 163, 73);
   }
 
+  void run() {
+    update();
+    display();
+  }
+
   void update() {
-    location.x =+ xSpeed;
-    location.y =+ ySpeed;
+    location.x = location.x + xSpeed;
+    location.y = location.y + ySpeed;
   }
 
   void display() {
