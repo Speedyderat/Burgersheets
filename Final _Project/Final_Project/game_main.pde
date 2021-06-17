@@ -4,17 +4,21 @@ class Game {
   Player player;
   Player2 player2;
   Puck puck;
+  
+  boolean done; 
 
   Game() {
     stadium = new Stadium();
     player = new Player();
     player2 = new Player2();
     puck = new Puck();
+    
+    done = false;
   }
 
   void run() {
   }
-  
+
   void display() {
     stadium.underground();
     //goals, class stadium
@@ -23,5 +27,10 @@ class Game {
     puck.display();
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
+  }
+
+  boolean introdone() { //when the character has reached the edge the intro is done
+
+    return done;
   }
 }
