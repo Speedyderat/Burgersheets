@@ -40,10 +40,11 @@ void mouseClicked() {
 
 void mouseDragged() {
   introscreen.mouseClickEvent();
+  game.mouseDraggedEvent(new PVector(mouseX, mouseY));
 }
 
 void mouseReleased() {
-  game.mouseDraggedEvent(new PVector(mouseX, mouseY));
+  game.mouseReleasedEvent();
 }
 
 void keyPressed() {
