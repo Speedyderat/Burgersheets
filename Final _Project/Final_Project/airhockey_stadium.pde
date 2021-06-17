@@ -21,13 +21,14 @@ class Stadium {
 
     if (((puck.location.y <= uppergoal) && ((puck.location.x <= bordersize) || (puck.location.x <= height - bordersize)))
       || ((puck.location.y >= lowergoal) && ((puck.location.x <= bordersize) || (puck.location.x <= height - bordersize)))) {
-        puck.acceleration.x -= puck.acceleration.x;
+      puck.acceleration.x -= puck.acceleration.x;
     }
   }
-  
-  //void goal();
-  //if ((puck.location.y >= uppergoal) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
-  //puck.reset();
-  ////game.score +1;
-  //}
+
+  void goal(Puck puck) {
+    if ((puck.location.y >= uppergoal) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
+      puck.reset();
+      game.score +1;
+    }
+  }
 }
