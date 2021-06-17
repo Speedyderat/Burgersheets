@@ -81,6 +81,16 @@ class Player2 {
     }
   }
 
-  //void collision(Puck localPuck){
-  //}
+  void collision(Puck puck) {
+    {
+      float distance = dist( location.x, location.y, puck.location.x, puck.location.y);
+      if (distance < 35)
+      {
+        float dx = location.x -puck.location.x;
+        float dy = location.y -puck.location.y;
+        puck.acceleration.x = -dx*0.2;
+        puck.acceleration.y = -dy*0.2;
+      }
+    }
+  }
 }
