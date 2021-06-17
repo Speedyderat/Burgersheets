@@ -10,7 +10,7 @@ class Puck {
     location = new PVector(width/2, height/2);
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
-    
+
     puckState = 0;
     puckColor = color(250, 200, 100);
   }
@@ -26,7 +26,7 @@ class Puck {
     circle(location.x, location.y, 50);
   }
 
-  
+
   //puck when starting off
   void launchStart() {
     if (puckState == 0) {                                                           //ball state zero indicates the ball is in its standard position in the catapult
