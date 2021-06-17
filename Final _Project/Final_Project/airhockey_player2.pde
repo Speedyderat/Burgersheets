@@ -1,17 +1,16 @@
 // class created using https://openprocessing.org/sketch/975642 code by Andreas
 
 class Player2 {
-  PVector location;
-  float sizeMain, sizeLight, sizeDark, xSpeed, ySpeed, speedWSAD;
+  PVector location, acceleration;
+  float sizeMain, sizeLight, sizeDark, speedWSAD;
   color main, light, dark; 
 
   Player2() {
     location = new PVector(width *3/4, height/2);
+    acceleration = new PVector(0,0);
     sizeMain = 90;
     sizeLight = 75;
     sizeDark = 40;
-    xSpeed = 0;
-    ySpeed = 0; 
     speedWSAD = 25;
     main = color(113, 209, 151); 
     light = color(128, 237, 172); 
@@ -24,8 +23,8 @@ class Player2 {
   }
 
   void update() {
-    location.x = location.x + xSpeed;
-    location.y = location.y + ySpeed;
+    location.x = location.x + acceleration.x;
+    location.y = location.y + acceleration.y;
   }
 
   void display() {
@@ -46,22 +45,22 @@ class Player2 {
     {
       if (keyCode==UP)
       {
-        ySpeed = -speedWSAD;
+        acceleration.y = -speedWSAD;
       }
 
       if (keyCode==DOWN)
       {
-        ySpeed = speedWSAD;
+        acceleration.y = speedWSAD;
       }
 
       if (keyCode==LEFT)
       {
-        xSpeed = -speedWSAD;
+        acceleration.x = -speedWSAD;
       }
 
       if (keyCode==RIGHT)
       {
-        xSpeed = speedWSAD;
+        acceleration.x = speedWSAD;
       }
     }
   }
@@ -71,12 +70,12 @@ class Player2 {
     {
       if (keyCode==UP || keyCode==DOWN)
       {
-        ySpeed = 0;
+        acceleration.y = 0;
       }
 
       if (keyCode==LEFT || keyCode==RIGHT)
       {
-        xSpeed = 0;
+        acceleration.x = 0;
       }
     }
   }
