@@ -8,6 +8,7 @@ class Puck {
 
   Puck() {
     location = new PVector(width/2, height/2);
+    launchLocation = new PVector(width/2, height/2);
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
 
@@ -15,9 +16,15 @@ class Puck {
     puckColor = color(250, 200, 100);
   }
 
+  void run() {
+    launchStart();
+    physics();
+    display();
+  }
+
   void physics() {
     location.add(acceleration);                                                         //acceleration is added to the current location of the ball
-    acceleration.add(velocity);                                                         //the acceleration changes over time because of added velocity
+    //acceleration.add(velocity);                                                         //the acceleration changes over time because of added velocity
     acceleration.mult(.99);                                                             //then you have a small amount of friction
   }
 
@@ -42,7 +49,7 @@ class Puck {
   void mouseDraggedEvent(PVector mouseLocation) {                                                         //when the ball is being dragged the ball is in state one
     puckState = 1;
     mouse = mouseLocation;                                                                                //the location of the mouse is passed through to "mouse"
-    velocity.set(- 0.2 * (mouse.x - launchLocation.x), - 0.2 * (mouse.y - launchLocation.y));             //the velocity gets calculated and reversed, ready for launch
+    acceleration.set(- 0.2 * (mouse.x - launchLocation.x), - 0.2 * (mouse.y - launchLocation.y));             //the velocity gets calculated and reversed, ready for launch
   }
 
   void mouseReleasedEvent() {                                                           //if ball is released then release is obviously true
