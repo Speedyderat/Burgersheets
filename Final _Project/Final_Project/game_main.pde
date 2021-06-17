@@ -23,7 +23,7 @@ class Game {
     stadium.underground();
     //goals, class stadium
     player.run();
-    player2.display();
+    player2.run();
     puck.display();
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium

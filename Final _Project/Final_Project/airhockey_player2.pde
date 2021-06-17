@@ -1,3 +1,5 @@
+// class created using https://openprocessing.org/sketch/975642 code by Andreas
+
 class Player2 {
   PVector location;
   float sizeMain, sizeLight, sizeDark, xSpeed, ySpeed, speedWSAD;
@@ -10,13 +12,22 @@ class Player2 {
     sizeDark = 40;
     xSpeed = 0;
     ySpeed = 0; 
-    speedWSAD =7;
+    speedWSAD = 25;
     main = color(113, 209, 151); 
     light = color(128, 237, 172); 
     dark = color(78, 145, 105);
   }
-  void update() {
+
+  void run() {
+    update();
+    display();
   }
+
+  void update() {
+    location.x = location.x + xSpeed;
+    location.y = location.y + ySpeed;
+  }
+
   void display() {
     // Green player 
     noStroke();
@@ -69,4 +80,7 @@ class Player2 {
       }
     }
   }
+
+  //void collision(Puck localPuck){
+  //}
 }
