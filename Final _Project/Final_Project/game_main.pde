@@ -24,7 +24,7 @@ class Game {
     //goals, class stadium
     player.run();
     player2.run();
-    puck.display();
+    puck.run();
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
   }

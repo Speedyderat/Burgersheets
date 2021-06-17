@@ -8,7 +8,7 @@ class Puck {
 
   Puck() {
     location = new PVector(width/2, height/2);
-    launchLocation = location;
+    launchLocation = new PVector(width/2, height/2);
     acceleration = new PVector(0, 0);
     velocity = new PVector(0, 0);
 
