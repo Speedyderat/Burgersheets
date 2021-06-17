@@ -24,6 +24,8 @@ class Game {
     //goals, class stadium
     player.run();
     player2.run();
+    player.collision(puck);
+    player2.collision(puck);
     puck.display();
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
@@ -33,16 +35,16 @@ class Game {
 
     return done;
   }
-  
-  void mouseDraggedEvent(PVector mouseLocation){
-  puck.mouseDraggedEvent(mouseLocation);
+
+  void mouseDraggedEvent(PVector mouseLocation) {
+    puck.mouseDraggedEvent(mouseLocation);
   }
 
   void keyPressedEvent() {
     player.keysPressedEvent();
     player2.keysPressedEvent();
   }
-  
+
   void keysReleasedEvent() {
     player.keysReleasedEvent();
     player2.keysReleasedEvent();
