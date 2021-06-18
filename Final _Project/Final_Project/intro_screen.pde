@@ -31,10 +31,11 @@ class IntroScreen {
   }
 
   void part1() { // character moves into the screen from the left
-    imageMode(CENTER);
+    imageMode(LEFT);
     sam.resize(0, 700);
     image(sam, width/2, 610 + i);
     
+    //making the character move up and down
     if (!limit && i == 25) {
       limit = true;
     } else if (limit && i == -25) {
