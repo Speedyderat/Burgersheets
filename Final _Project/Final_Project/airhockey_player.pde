@@ -42,12 +42,10 @@ class Player {
   }
 
   void collision(Puck puck) {
+    distance = PVector.sub(location, puck.location);
+    if (distance.mag() < sizeLight)
     {
-      distance = PVector.sub(location, puck.location);
-      if (distance.mag() < sizeLight)
-      {
-        puck.acceleration.sub(distance.mult(0.2));
-      }
+      puck.acceleration.sub(distance.mult(0.2));
     }
   }
 

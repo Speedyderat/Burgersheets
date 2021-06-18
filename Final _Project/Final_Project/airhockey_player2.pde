@@ -40,13 +40,10 @@ class Player2 {
     circle(location.x, location.y, 40);
   }
 
-  void collision(Puck puck) {
-    {
-      distance = PVector.sub(location, puck.location);
-      if (distance.mag() < sizeLight)
-      {
-        puck.acceleration.sub(distance.mult(0.2));
-      }
+  void collision(Puck puck) { 
+    distance = PVector.sub(location, puck.location); //    float distance = dist( location.x, location.y, puck.location.x, puck.location.y);
+    if (distance.mag() < sizeLight) {                //    if (distance < 35)
+      puck.acceleration.sub(distance.mult(0.2));
     }
   }
 

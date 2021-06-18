@@ -22,7 +22,7 @@ void draw() {
   if (stage == 0) {
     introscreen.display();
   } else if (stage == 1) {
-    game.display();
+    game.run();
   } else if (stage == 2) {
     outroscreen.display();
   }

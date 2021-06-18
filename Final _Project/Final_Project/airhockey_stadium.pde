@@ -5,18 +5,25 @@ class Stadium {
 
   Stadium() {
     underground = loadImage("image/underground.png");
+    
     bordersize = 10;
     goalsize = 150;
+    
     uppergoal = height/2 - goalsize/2;
     lowergoal = height/2 + goalsize/2;
   }
 
   void underground() {
+    //underground with "airholes"
     image(underground, 0, 0, width, height);
+    
+    //goals 
     stroke(0);
     strokeWeight(10);
     line(0, uppergoal, 0, lowergoal);
     line(width, uppergoal, width, lowergoal);
+    
+    //potential add: middle dot / lines
   }
 
   void goal(Puck puck) {
@@ -68,7 +75,7 @@ class Stadium {
         player.location.y = height - bordersize;
       }
 
-      player.acceleration.y =- player.acceleration.y;
+      player.acceleration.y =- player.acceleration.y;                                                                         // reverse the movement of the player
     } 
 
     if ((player.location.x <= bordersize) || (player.location.x >= width - bordersize)) {                                     // X axies borders for the player
@@ -84,7 +91,7 @@ class Stadium {
 
 
     //collision detection for the player2
-    if ((player2.location.y <= bordersize) || (player2.location.y >= height-bordersize)) {
+    if ((player2.location.y <= bordersize) || (player2.location.y >= height-bordersize)) {                                    // Y axies borders for player 2
 
       if (player2.location.y < height/2) {
         player2.location.y = bordersize;
@@ -95,7 +102,7 @@ class Stadium {
       player2.acceleration.y =- player2.acceleration.y;
     }
 
-    if ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)) {
+    if ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)) {                                     // X axies borders for player 2
 
       if (player2.location.x < width/2) {
         player2.location.x = bordersize;

@@ -19,9 +19,6 @@ class Game {
   }
 
   void run() {
-  }
-
-  void display() {
     stadium.underground();
     // stadium.goal(puck);
     //goals, class stadium
@@ -33,11 +30,6 @@ class Game {
     puck.run();
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
-  }
-
-  void score(boolean player) {
-    if (player) {
-    }
   }
 
   boolean gamedone() { //when the character has reached the edge the intro is done
