@@ -81,24 +81,7 @@ class Player {
 
     if (key=='a' || key=='d')
     {
-<<<<<<< Updated upstream
       acceleration.x = 0;
-=======
-      xSpeed = 0;
-    }
-  }
-
-  void collision(Puck puck) {
-    {
-      float distance = dist( location.x, location.y, puck.location.x, puck.location.y);
-      if (distance < 60)
-      {
-        float dx = location.x -puck.location.x;
-        float dy = location.y -puck.location.y;
-        puck.acceleration.x = -dx*0.2;
-        puck.acceleration.y = -dy*0.2;
-      }
->>>>>>> Stashed changes
     }
   }
 }
