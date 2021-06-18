@@ -3,13 +3,17 @@ class IntroScreen {
   int stage;
   boolean done;
   float xoff;
-  float xincrement; 
+  float xincrement1; 
+  float xincrement2;
+  float xincrement3; 
   float start;
 
   IntroScreen() {
     stage = 0;
     xoff = 0;
-    xincrement = 0.01;
+    xincrement1 = 0.001;    //changes the sharpness or smoothness level of the mountains
+    xincrement2 = 0.001;
+    xincrement3 = 0.001;
     start= 0;
   }
 
@@ -32,28 +36,65 @@ class IntroScreen {
   }
 
   void hills() { //the continuesly moving background
-    background(164,227,236);
-    stroke(0);
-    fill(200);
+    background(164, 227, 236);
+    noStroke(); 
+
+    //mountain 1
+    fill( 251, 197, 196);
 
     beginShape();
     vertex(0, height);
-    float xoff = start;
+    xoff = start;
 
     for (float x = 0; x < width; x++) {
       stroke(255);
-      // let y = random(height);
-      float y = map(noise(xoff) * height, 0, height, 200, 350);
+      float y = map(noise(xoff) * height, 0, height, 100, 250); // location of the mountains
       vertex(x, y);
-      xoff += xincrement;
+      xoff += xincrement1;
     }
 
     vertex(width, height);
     endShape();
 
-    start += xincrement;
-    fill(150);
-    rect(0, 400, width, height);
+    start += xincrement1;
+
+    //mountain 2
+    fill(252,162,139);
+
+    beginShape();
+    vertex(0, height);
+    xoff = start;
+
+    for (float x = 0; x < width; x++) {
+      stroke(255);
+      float y = map(noise(xoff) * height, 0, height, 200, 350); // location of the mountains
+      vertex(x, y);
+      xoff += xincrement2;
+    }
+
+    vertex(width, height);
+    endShape();
+
+    start += xincrement2;
+
+    //mountain 3
+    fill(250, 125, 121);
+
+    beginShape();
+    vertex(0, height);
+    xoff = start;
+
+    for (float x = 0; x < width; x++) {
+      stroke(255);
+      float y = map(noise(xoff) * height, 0, height, 300, 450); // location of the mountains
+      vertex(x, y);
+      xoff += xincrement3;
+    }
+
+    vertex(width, height);
+    endShape();
+
+    start += xincrement3;
   }
 }
 
