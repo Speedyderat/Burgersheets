@@ -13,7 +13,7 @@ void setup() {
   game = new Game();
   outroscreen = new OutroScreen();
 
-  stage = 1;
+  stage = 0;
 }
 
 void draw() {
@@ -28,18 +28,18 @@ void draw() {
 }
 
 void stagechecker() {
-  introscreen.introdone();
+  //introscreen.introdone();
   game.gamedone();
 }
 
 void mouseClicked() {
   if (stage == 0) {
-    introscreen.mouseClickEvent();
+   // introscreen.mouseClickEvent();
   }
 }
 
 void mouseDragged() {
-  introscreen.mouseClickEvent();
+ // introscreen.mouseClickEvent();
   game.mouseDraggedEvent(new PVector(mouseX, mouseY));
 }
 
