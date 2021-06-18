@@ -46,8 +46,8 @@ class Stadium {
       }
       player.acceleration.y =- player.acceleration.y;
     } 
-    if (( (player.location.y <= uppergoal) && ((player.location.x <= bordersize) || (player.location.x >= width - bordersize)) )
-      || ((player.location.y >= lowergoal) && ((player.location.x <= bordersize) || (player.location.x >= width - bordersize)))) {
+    if ((player.location.x <= bordersize) || (player.location.x >= width - bordersize)
+      || ((player.location.x <= bordersize) || (player.location.x >= width - bordersize))) {
       if (player.location.x < width/2) {
         player.location.x = bordersize;
       } else {
@@ -64,8 +64,8 @@ class Stadium {
       }
       player2.acceleration.y =- player2.acceleration.y;
     }
-    if (( (player2.location.y <= uppergoal) && ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)) )
-      || ((player2.location.y >= lowergoal) && ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)))) {
+    if ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)
+      || ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize))) {
       if (player2.location.x < width/2) {
         player2.location.x = bordersize;
       } else {
@@ -80,9 +80,9 @@ class Stadium {
       puck.reset();
       println("goal");
       if (puck.location.x < width/2) {
-      game.score(true) +1;
+        //game.score(true) +1;
       } else {
-      game.score(false) +1;
+        //game.score(false) +1;
       }
     }
   }
