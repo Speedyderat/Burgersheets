@@ -1,16 +1,14 @@
 class IntroScreen {
 
-  int stage, y, x;
+  int stage;
   boolean done, limit, isWalking, visable, activated;
   float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed;
   PImage sam;
-  PVector location;
-  String buttonText = "boooo";
+  PVector samLocation, buttonLocation, text1Location;
+  String buttonText, welcomeText, gameRules;
 
 
   IntroScreen() {
-    x = 50;
-    y = 50;
     stage = 0;
     xoff = 0;
     yincrement1 = 0.004;    //changes the sharpness or smoothness level of the mountains
@@ -22,10 +20,15 @@ class IntroScreen {
     i=0;
     limit = false;
     sam = loadImage("image/stickfigure.png");
-    location = new PVector(220, 610);
+    samLocation = new PVector(220, 610);
+    buttonLocation = new PVector(width/2, 100);
+    text1Location = new PVector(120, 210);
     isWalking = true;
     visable = true;
     activated = false;
+    buttonText = "START GAME";
+    welcomeText = "AirHokey on steroids";
+    gameRules = "Welcome to our Airhockey game :) The rules are simple, just like in a normal airhockey game. Players can controll the controllers using the WSAD and the arrow keys. The starting player gets to start the game by dragging and shooting the puck in the opponets direction. Good luck and may the odds be in your favor";
   }
 
   void display() {
@@ -45,7 +48,7 @@ class IntroScreen {
   void Sam() { // character sam 
     imageMode(CENTER);
     sam.resize(0, 700);
-    image(sam, location.x, location.y + i);
+    image(sam, samLocation.x, samLocation.y + i);
 
     //making the character move up and down
     if (!limit && i == 25) {
@@ -60,12 +63,12 @@ class IntroScreen {
   }
 
   void part1() { // character moves into the screen from the left
-    location.x += samSpeed;    //adding movement for sam to walk into the screen
+    samLocation.x += samSpeed;    //adding movement for sam to walk into the screen
   }
 
   //a boolean method to stop the creature from walking
   boolean walkingSam() {
-    if ((location.x > width/2  && samSpeed > 0)) {
+    if ((samLocation.x > width/2  && samSpeed > 0)) {
       samSpeed = 0;
       isWalking = false;
       stage = stage+1;
@@ -74,19 +77,25 @@ class IntroScreen {
   }
 
   void part2() { //character stays in the middle of the screen while the name of the game pops up
+    textSize(10);
+    //textAlign(CENTER);
+    text(welcomeText, text1Location.x, text1Location.y);
+    text(gameRules, text1Location.x, text1Location.y+100);
     {
       fill(200);
+      textSize(34);
       if (over()) {
         fill(255);
       }
-      rect(x, y, textWidth(buttonText), 25);
+      rect(buttonLocation.x, buttonLocation.y, textWidth(buttonText)+5, 55);
       fill(0);
-      text(buttonText, x, y + 20);
+      text(buttonText, buttonLocation.x, buttonLocation.y + 40);
     }
   }
 
+
   boolean over() {
-    if (mouseX >= x && mouseY >= y && mouseX <= x + textWidth(buttonText) && mouseY <= y + 22) {
+    if (mouseX >= buttonLocation.x && mouseY >= buttonLocation.y && mouseX <= buttonLocation.x + textWidth(buttonText) && mouseY <= buttonLocation.y + 55) {
       return true;
     }
     return false;
