@@ -8,12 +8,13 @@ int stage;
 
 void setup() {
   size(1000, 706); //because of size of the background of the stadium
+smooth(4);
 
   introscreen = new IntroScreen();
   game = new Game();
   outroscreen = new OutroScreen();
 
-  stage = 0;
+  stage = 1;
 }
 
 void draw() {

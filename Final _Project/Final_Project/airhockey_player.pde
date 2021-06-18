@@ -12,7 +12,7 @@ class Player {
     sizeMain = 90;
     sizeLight = 75;
     sizeDark = 40;
-    speedWSAD = 25;
+    speedWSAD = 10;
     main = color(185, 201, 91); 
     light = color(209, 228, 102); 
     dark = color(150, 163, 73);

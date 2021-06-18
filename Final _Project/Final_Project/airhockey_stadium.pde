@@ -6,13 +6,17 @@ class Stadium {
   Stadium() {
     underground = loadImage("image/underground.png");
     bordersize = 10;
-    goalsize = 50;
+    goalsize = 150;
     uppergoal = height/2 - goalsize/2;
     lowergoal = height/2 + goalsize/2;
   }
 
   void underground() {
     image(underground, 0, 0, width, height);
+    stroke(0);
+    strokeWeight(10);
+    line(0, uppergoal, 0, lowergoal);
+    line(width, uppergoal, width, lowergoal);
   }
 
   void borderPhysics(Puck puck, Player player, Player2 player2) {
@@ -72,8 +76,9 @@ class Stadium {
   }
 
   void goal(Puck puck) {
-    if ((puck.location.y >= uppergoal) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
+    if (((puck.location.y >= uppergoal) && (puck.location.y <= lowergoal)) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
       puck.reset();
+      println("goal");
       //game.score +1;
     }
   }

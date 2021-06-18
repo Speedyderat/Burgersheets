@@ -21,6 +21,7 @@ class Game {
 
   void display() {
     stadium.underground();
+    stadium.goal(puck);
     //goals, class stadium
     stadium.borderPhysics(puck, player, player2);
     player.run();
