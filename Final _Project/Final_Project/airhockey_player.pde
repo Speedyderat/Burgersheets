@@ -1,13 +1,14 @@
 // class created using https://openprocessing.org/sketch/975642 code by Andreas
 
 class Player {
-  PVector location, acceleration;
+  PVector location, acceleration, distance;
   float sizeMain, sizeLight, sizeDark, speedWSAD;
-  color main, light, dark; 
+  color main, light, dark;
+  float dist;
 
   Player() {
     location = new PVector(width/4, height/2);
-    acceleration = new PVector(0,0);
+    acceleration = new PVector(0, 0);
     sizeMain = 90;
     sizeLight = 75;
     sizeDark = 40;
@@ -38,6 +39,16 @@ class Player {
     circle(location.x - 4, location.y + 4, sizeDark);
     fill (main);                            //main
     circle(location.x, location.y, sizeDark);
+  }
+
+  void collision(Puck puck) {
+    {
+      distance = PVector.sub(location, puck.location);
+      if (distance.mag() < sizeLight)
+      {
+        puck.acceleration.sub(distance.mult(0.2));
+      }
+    }
   }
 
   void keysPressedEvent() {
@@ -71,19 +82,6 @@ class Player {
     if (key=='a' || key=='d')
     {
       acceleration.x = 0;
-    }
-  }
-
-  void collision(Puck puck) {
-    {
-      float distance = dist( location.x, location.y, puck.location.x, puck.location.y);
-      if (distance < 35)
-      {
-        float dx = location.x -puck.location.x;
-        float dy = location.y -puck.location.y;
-        puck.acceleration.x = -dx*0.2;
-        puck.acceleration.y = -dy*0.2;
-      }
     }
   }
 }

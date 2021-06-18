@@ -22,12 +22,12 @@ class Game {
   void display() {
     stadium.underground();
     //goals, class stadium
+    stadium.borderPhysics(puck, player, player2);
     player.run();
     player2.run();
     player.collision(puck);
     player2.collision(puck);
     puck.run();
-    stadium.borderPhysics(puck, player, player2);
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
   }
@@ -40,11 +40,11 @@ class Game {
   void mouseDraggedEvent(PVector mouseLocation) {
     puck.mouseDraggedEvent(mouseLocation);
   }
-  
-  void mouseReleasedEvent(){
-  puck.mouseReleasedEvent();
+
+  void mouseReleasedEvent() {
+    puck.mouseReleasedEvent();
   }
-  
+
 
   void keyPressedEvent() {
     player.keysPressedEvent();
