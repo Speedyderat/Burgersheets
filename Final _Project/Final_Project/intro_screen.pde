@@ -1,20 +1,22 @@
 class IntroScreen {
 
   int stage;
-  boolean done;
-  float xoff;
-  float xincrement1; 
-  float xincrement2;
-  float xincrement3; 
-  float start;
+  boolean done, limit;
+  float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i;
+  PImage sam;
+
 
   IntroScreen() {
     stage = 0;
     xoff = 0;
-    xincrement1 = 0.001;    //changes the sharpness or smoothness level of the mountains
-    xincrement2 = 0.001;
-    xincrement3 = 0.001;
+    yincrement1 = 0.004;    //changes the sharpness or smoothness level of the mountains
+    yincrement2 = 0.003;
+    yincrement3 = 0.002;
     start= 0;
+    xSpeed = 0.001;
+    i=0;
+    limit = false;
+    sam = loadImage("image/stickfigure.png");
   }
 
   void display() {
@@ -29,6 +31,19 @@ class IntroScreen {
   }
 
   void part1() { // character moves into the screen from the left
+    imageMode(CENTER);
+    sam.resize(0, 700);
+    image(sam, width/2, 610 + i);
+    
+    if (!limit && i == 25) {
+      limit = true;
+    } else if (limit && i == -25) {
+      limit = false;
+    } else if (!limit && i <= 25) {
+    i++;
+    } else {
+    i--;
+    }
   }
   void part2() { //character stays in the middle of the screen while the name of the game pops up
   }  
@@ -50,16 +65,16 @@ class IntroScreen {
       stroke(255);
       float y = map(noise(xoff) * height, 0, height, 100, 250); // location of the mountains
       vertex(x, y);
-      xoff += xincrement1;
+      xoff += yincrement1;
     }
 
     vertex(width, height);
     endShape();
 
-    start += xincrement1;
+    start += xSpeed;
 
     //mountain 2
-    fill(252,162,139);
+    fill(252, 162, 139);
 
     beginShape();
     vertex(0, height);
@@ -67,15 +82,15 @@ class IntroScreen {
 
     for (float x = 0; x < width; x++) {
       stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 200, 350); // location of the mountains
+      float y = map(noise(xoff) * height, 0, height, 300, 450); // location of the mountains
       vertex(x, y);
-      xoff += xincrement2;
+      xoff += yincrement2;
     }
 
     vertex(width, height);
     endShape();
 
-    start += xincrement2;
+    start += xSpeed;
 
     //mountain 3
     fill(250, 125, 121);
@@ -86,15 +101,15 @@ class IntroScreen {
 
     for (float x = 0; x < width; x++) {
       stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 300, 450); // location of the mountains
+      float y = map(noise(xoff) * height, 0, height, 500, 550); // location of the mountains
       vertex(x, y);
-      xoff += xincrement3;
+      xoff += yincrement3;
     }
 
     vertex(width, height);
     endShape();
 
-    start += xincrement3;
+    start += xSpeed;
   }
 }
 

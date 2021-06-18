@@ -14,7 +14,7 @@ smooth(4);
   game = new Game();
   outroscreen = new OutroScreen();
 
-  stage = 1;
+  stage = 0;
 }
 
 void draw() {
