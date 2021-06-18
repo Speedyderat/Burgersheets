@@ -34,7 +34,7 @@ class Player2 {
     circle(location.x, location.y, 90);  
     fill (light);                             //lighter
     circle(location.x, location.y, 75);
-    fill (dark);                               //darker
+    fill (dark);                              //darker
     circle(location.x + 4, location.y + 4, 40);
     fill (main);                             //main
     circle(location.x, location.y, 40);
