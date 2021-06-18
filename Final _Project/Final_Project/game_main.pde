@@ -32,6 +32,12 @@ class Game {
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
   }
+  
+  void score(boolean player){
+    if (player) {
+      
+    }
+  }
 
   boolean gamedone() { //when the character has reached the edge the intro is done
 
