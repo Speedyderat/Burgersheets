@@ -48,6 +48,10 @@ void mouseReleased() {
   game.mouseReleasedEvent();
 }
 
+void mousePressed(){
+  game.buttonPressed();
+}
+
 void keyPressed() {
   game.keyPressedEvent();
 }
