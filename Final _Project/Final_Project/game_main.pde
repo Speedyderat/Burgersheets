@@ -6,7 +6,7 @@ class Game {
   Puck puck;
 
   int score1, score2;
-  boolean done; 
+  boolean done, woop, woop2; 
 
   Game() {
     stadium = new Stadium();
@@ -42,6 +42,12 @@ class Game {
 
   boolean gamedone() { //when the character has reached the edge the intro is done
     if (score1 == 3 || score2 == 3) {
+      if (score1==3) {
+        woop = true;
+      }
+      if (score2 == 3) {
+        woop2 = true;
+      }
       return true;
     } else {
       return false;

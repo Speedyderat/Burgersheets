@@ -1,5 +1,6 @@
 //beep
-
+import java.util.Iterator;
+  
 IntroScreen introscreen;
 Game game;
 OutroScreen outroscreen;
@@ -14,7 +15,7 @@ void setup() {
   game = new Game();
   outroscreen = new OutroScreen();
 
-  stage = 2;
+  stage =1;
 }
 
 void draw() {
@@ -24,7 +25,7 @@ void draw() {
   } else if (stage == 1) {
     game.run();
   } else if (stage == 2) {
-    outroscreen.display();
+    outroscreen.display(game);
   }
 }
 
