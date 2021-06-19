@@ -1,6 +1,6 @@
 class IntroScreen {
 
-  int stage;
+  int state;
   boolean done, limit, isWalking, visable, activated, isClicked;
   float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed;
   PImage sam;
@@ -10,7 +10,7 @@ class IntroScreen {
 
 
   IntroScreen() {
-    stage = 0;
+    state = 0;
     xoff = 0;
     yincrement1 = 0.004;    //changes the sharpness or smoothness level of the mountains
     yincrement2 = 0.003;
@@ -38,18 +38,15 @@ class IntroScreen {
   void display() {
     hills();
     Sam();
-    if (stage == 0) {
+    if (state == 0) {
       part1();
       walkingSam();
-      println(1);
-    } else if (stage == 1) {
+    } else if (state == 1) {
       part2();
       hover();
-      buttonPressed();
-      println(2);
-    } else if (stage == 2) {
+      //buttonPressed();
+    } else if (state == 2) {
       part3();
-      println(3);
     }
   }
 
@@ -79,7 +76,7 @@ class IntroScreen {
     if ((samLocation.x > width/2  && samSpeed > 0)) {
       samSpeed = 0;
       isWalking = false;
-      stage = stage+1;
+      state++;
     }
     return isWalking;
   }
@@ -94,16 +91,14 @@ class IntroScreen {
     text(gameRules, text1Location.x - 400, text1Location.y + 80, 900, 200);
 
     //function for the start button. 
-    {
-      fill(110, 255, 242);
-      textSize(35);
-      if (hover()) {
-        fill(186, 255, 161);
-      }
-      rect(buttonLocation.x, buttonLocation.y, textWidth(buttonText)+5, 55);
-      fill(250, 125, 121);
-      text(buttonText, buttonLocation.x, buttonLocation.y + 40);
+    fill(110, 255, 242);
+    textSize(35);
+    if (hover()) {
+      fill(186, 255, 161);
     }
+    rect(buttonLocation.x, buttonLocation.y, textWidth(buttonText)+5, 55);
+    fill(250, 125, 121);
+    text(buttonText, buttonLocation.x, buttonLocation.y + 40);
   }
 
   // making the button work like a button, if the mouse is over it, it changes color
@@ -115,11 +110,10 @@ class IntroScreen {
   }
 
   //making the button clickable
-  void buttonPressed() {
+  void mousePressedEvent() {
     if (hover()) {
       println("Whoo clicky!");
-      stage = stage+1;
-      println(stage);
+      state++;
     }
   }
 

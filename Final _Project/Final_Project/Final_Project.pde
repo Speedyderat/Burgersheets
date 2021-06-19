@@ -49,7 +49,7 @@ void mouseReleased() {
 }
 
 void mousePressed(){
-  game.buttonPressed();
+  introscreen.mousePressedEvent();
 }
 
 void keyPressed() {

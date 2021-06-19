@@ -4,7 +4,6 @@ class Game {
   Player player;
   Player2 player2;
   Puck puck;
-  IntroScreen introScreen;
 
   boolean done; 
 
@@ -13,14 +12,13 @@ class Game {
     player = new Player();
     player2 = new Player2();
     puck = new Puck();
-    introScreen = new IntroScreen();
 
     done = false;
   }
 
   void run() {
     stadium.underground();
-    // stadium.goal(puck);
+    stadium.goal(puck);
     //goals, class stadium
     stadium.borderPhysics(puck, player, player2);
     player.run();
@@ -54,9 +52,5 @@ class Game {
   void keysReleasedEvent() {
     player.keysReleasedEvent();
     player2.keysReleasedEvent();
-  }
-  
-  void buttonPressed() {
-    introScreen.buttonPressed();
   }
 }
