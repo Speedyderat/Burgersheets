@@ -1,28 +1,31 @@
-void setup () {
-  size(500, 500);
-  background (255);
+/* This program has been written by Jasper Bosschart (s2562685) & Marina Stefanova (s2610604), assignment 4 from module 4 CreaTe 2021 */
+// The Nature of Code
+// Daniel Shiffman
+//https://natureofcode.com/book/chapter-4-particle-systems/ 
+ParticleSystem ps;
+//Wand wand;
+PImage background;
+
+void setup() {
+  size(1000,750);
+  ps = new ParticleSystem();
 }
 
 void draw() {
-  // Yellow player
-  noStroke();
-  fill (185, 201, 91);                      //main
-  circle(width/2, height/2, 90);
-  fill (209, 228, 102);                     //lighter
-  circle(width/2, height/2, 75);
-  fill (150, 163, 73);                      //dadrjer
-  circle(width/2 - 4, height/2 + 4, 40);
-  fill (185, 201, 91);                      //main
-  circle(width/2, height/2, 40);
-
-  // Green player 
-  noStroke();
-  fill (113, 209, 151);                     //main
-  circle(width/2, height/2, 90);
-  fill (128, 237, 172);                     //lighter
-  circle(width/2, height/2, 75);
-  fill (78, 145, 105);                      //darker
-  circle(width/2 - 4, height/2 + 4, 40);
-  fill (113, 209, 151);                     //main
-  circle(width/2, height/2, 40);
+  background (0);
+  ps.run();
+  ps.addParticle();                                                                //adds a particle when the mouse is clicked  
 }
+
+//void mouseMoved() {
+//wand.mouseMovedEvent(new PVector(mouseX, mouseY));                                 //moving the mouse moves the wand
+//}
+
+//void mouseDragged() {                                                              //dragging the mouse moves the wand and the particle origin
+//  ps.mouseDraggedEvent(new PVector(mouseX, mouseY));
+//  wand.mouseMovedEvent(new PVector(mouseX, mouseY));
+//}
+
+//void mouseReleased() {                                                             // releasing the mouse stops the the particles
+//  ps.mouseReleasedEvent();
+//}
