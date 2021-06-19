@@ -2,9 +2,9 @@ class IntroScreen {
 
   int state;
   boolean done, limit, isWalking, visable, activated, isClicked;
-  float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed;
-  PImage sam;
-  PVector samLocation, buttonLocation, text1Location;
+  float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed, buildingSpeed;
+  PImage sam, building;
+  PVector samLocation, buttonLocation, text1Location, buildingLocation;
   String buttonText, welcomeText, gameRules;
   PFont myFont, myFont2;
 
@@ -18,12 +18,15 @@ class IntroScreen {
     start= 0;
     xSpeed = 0.001;
     samSpeed = 5; // chamnge back to 2, this is so i dont have to wait 5h forh im to walk
+    buildingSpeed = 5;
     i=0;
     limit = false;
     sam = loadImage("image/stickfigure.png");
+    building = loadImage("image/stadium.png");
     samLocation = new PVector(220, 630);
     buttonLocation = new PVector(width/2+220, 600);
     text1Location = new PVector(width/2 - 50, 100);
+    buildingLocation = new PVector(width, 0);
     isWalking = true;
     visable = true;
     activated = false;
@@ -37,23 +40,25 @@ class IntroScreen {
 
   void display() {
     hills();
-    Sam();
     if (state == 0) {
-      part1();
+      //part1();
       walkingSam();
     } else if (state == 1) {
       part2();
       hover();
-      //buttonPressed();
     } else if (state == 2) {
-      part3();
+      startWalking();
+      samContinues();
+      building();
     }
+    sam();
   }
 
-  void Sam() { // character sam 
+  void sam() { // character sam 
     imageMode(CENTER);
     sam.resize(0, 700);
     image(sam, samLocation.x, samLocation.y + i);
+    samLocation.x += samSpeed;    //adding movement for sam to walk into the screen
 
     //making the character move up and down
     if (!limit && i == 20) {
@@ -67,9 +72,8 @@ class IntroScreen {
     }
   }
 
-  void part1() { // character moves into the screen from the left
-    samLocation.x += samSpeed;    //adding movement for sam to walk into the screen
-  }
+  //void part1() { // character moves into the screen from the left
+  //}
 
   //a boolean method to stop the creature from walking
   boolean walkingSam() {
@@ -112,13 +116,35 @@ class IntroScreen {
   //making the button clickable
   void mousePressedEvent() {
     if (hover()) {
-      println("Whoo clicky!");
       state++;
     }
   }
 
-  void part3() { //character moves to the right side until it has reached it
-    println("NEW NEW!");
+  //void part3() { //character moves to the right side until it has reached it
+  //  println("NEW NEW!");
+  //  samLocation.x += samSpeed;
+  //}
+
+  void startWalking() {
+    samSpeed = 2;
+    isWalking = true;
+  }
+
+  boolean samContinues() {
+    if ((samLocation.x > width *3/4 + 50 && samSpeed > 0 && isWalking)) {
+      samSpeed = 0;
+      isWalking = false;
+    }
+    return isWalking;
+  }
+
+  void building() {
+    imageMode(CORNER);
+    image(building, buildingLocation.x, buildingLocation.y);
+    buildingLocation.x -= buildingSpeed;    //adding movement for sam to walk into the screen
+    if(buildingLocation.x == 0){
+      buildingSpeed = 0;
+    }
   }
 
 
