@@ -1,7 +1,7 @@
 class IntroScreen {
 
-  int state;
-  boolean done, limit, isWalking, visable, activated, isClicked;
+  int Stage;
+  boolean done, limit, isWalking, visable, activated, isClicked, hover;
   float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed, buildingSpeed;
   PImage sam, building;
   PVector samLocation, buttonLocation, text1Location, buildingLocation;
@@ -10,27 +10,25 @@ class IntroScreen {
 
 
   IntroScreen() {
-    state = 0;
-    xoff = 0;
+    Stage = 0;
+
     yincrement1 = 0.004;    //changes the sharpness or smoothness level of the mountains
     yincrement2 = 0.003;
     yincrement3 = 0.002;
-    start= 0;
     xSpeed = 0.001;
+
     samSpeed = 5; // chamnge back to 2, this is so i dont have to wait 5h forh im to walk
     buildingSpeed = 5;
-    i=0;
     limit = false;
+
     sam = loadImage("image/stickfigure.png");
     building = loadImage("image/stadium.png");
+
     samLocation = new PVector(220, 630);
     buttonLocation = new PVector(width/2+220, 600);
     text1Location = new PVector(width/2 - 50, 100);
-    buildingLocation = new PVector(width, 0);
-    isWalking = true;
-    visable = true;
-    activated = false;
-    isClicked = false;
+    buildingLocation = new PVector(width+150, 0);
+
     buttonText = "START GAME";
     welcomeText = "AIR HOCKEY ";
     gameRules = "Welcome to our Airhockey game :) The rules are simple, just like in a normal airhockey game. Players can controll the controllers using the WSAD and the arrow keys. The starting player gets to start the game by dragging and shooting the puck in the opponets direction. Good luck and may the odds be ever in your favor.";
@@ -39,16 +37,29 @@ class IntroScreen {
   }
 
   void display() {
+    background(164, 227, 236);
+
     hills();
-    if (state == 0) {
-      //part1();
-      walkingSam();
-    } else if (state == 1) {
-      part2();
-      hover();
-    } else if (state == 2) {
-      startWalking();
-      samContinues();
+
+    // stage 0 is where sam walks into the screen
+    if (Stage == 0) {
+
+      if (samLocation.x > width/2) {
+        Stage++;
+      }
+
+      // in stage 1 sam stays in the middle of the screen, walking while the explaination of the game is being presented
+    } else if (Stage == 1) {
+      samSpeed = 0;
+      introText();
+    } else if (Stage == 2) {
+
+      if (samLocation.x > width *3/4 + 50) {
+        samSpeed = 0;
+      } else {
+        samSpeed = 2;
+      }
+
       building();
     }
     sam();
@@ -72,20 +83,7 @@ class IntroScreen {
     }
   }
 
-  //void part1() { // character moves into the screen from the left
-  //}
-
-  //a boolean method to stop the creature from walking
-  boolean walkingSam() {
-    if ((samLocation.x > width/2  && samSpeed > 0)) {
-      samSpeed = 0;
-      isWalking = false;
-      state++;
-    }
-    return isWalking;
-  }
-
-  void part2() { //character stays in the middle of the screen while the name of the game pops up
+  void introText() { //character stays in the middle of the screen while the name of the game pops up
     //introducing the game
     fill(250, 125, 121);
     textFont(myFont);
@@ -97,7 +95,7 @@ class IntroScreen {
     //function for the start button. 
     fill(110, 255, 242);
     textSize(35);
-    if (hover()) {
+    if (hover) {
       fill(186, 255, 161);
     }
     rect(buttonLocation.x, buttonLocation.y, textWidth(buttonText)+5, 55);
@@ -105,49 +103,31 @@ class IntroScreen {
     text(buttonText, buttonLocation.x, buttonLocation.y + 40);
   }
 
-  // making the button work like a button, if the mouse is over it, it changes color
-  boolean hover() {
-    if (mouseX >= buttonLocation.x && mouseY >= buttonLocation.y && mouseX <= buttonLocation.x + textWidth(buttonText) && mouseY <= buttonLocation.y + 55) {
-      return true;
+  void building() {
+
+    imageMode(CORNER);
+    image(building, buildingLocation.x, buildingLocation.y);
+
+    if (buildingLocation.x == 0) {
+      buildingSpeed = 0;
+    } else {
+      buildingLocation.x -= buildingSpeed;    //adding movement for sam to walk into the screen
     }
-    return false;
+  }
+
+  // making the button work like a button, if the mouse is over it, it changes color
+  void mouseMovedEvent(PVector mouse) {
+    if (mouse.x >= buttonLocation.x && mouse.y >= buttonLocation.y && mouse.x <= buttonLocation.x + textWidth(buttonText) && mouse.y <= buttonLocation.y + 55) {
+      hover = true;
+    }
   }
 
   //making the button clickable
   void mousePressedEvent() {
-    if (hover()) {
-      state++;
+    if (hover) {
+      Stage++;
     }
   }
-
-  //void part3() { //character moves to the right side until it has reached it
-  //  println("NEW NEW!");
-  //  samLocation.x += samSpeed;
-  //}
-
-  void startWalking() {
-    samSpeed = 2;
-    isWalking = true;
-  }
-
-  boolean samContinues() {
-    if ((samLocation.x > width *3/4 + 50 && samSpeed > 0 && isWalking)) {
-      samSpeed = 0;
-      isWalking = false;
-    }
-    return isWalking;
-  }
-
-  void building() {
-    imageMode(CORNER);
-    image(building, buildingLocation.x, buildingLocation.y);
-    buildingLocation.x -= buildingSpeed;    //adding movement for sam to walk into the screen
-    if(buildingLocation.x == 0){
-      buildingSpeed = 0;
-    }
-  }
-
-
 
 
 
@@ -170,7 +150,6 @@ class IntroScreen {
 
 
   void hills() { //the continuesly moving background
-    background(164, 227, 236);
     noStroke(); 
 
     //mountain 1
@@ -230,12 +209,12 @@ class IntroScreen {
 
     start += xSpeed;
   }
+
+  //boolean introdone() { //when the character has reached the edge the intro is done
+
+  //  return done;
+  //}
+
+  //void mouseClickEvent() {
+  //}
 }
-
-//boolean introdone() { //when the character has reached the edge the intro is done
-
-//  return done;
-//}
-
-//void mouseClickEvent() {
-//}

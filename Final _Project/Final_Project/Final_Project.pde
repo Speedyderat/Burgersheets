@@ -8,7 +8,7 @@ int stage;
 
 void setup() {
   size(1000, 706); //because of size of the background of the stadium
-smooth(4);
+  smooth(4);
 
   introscreen = new IntroScreen();
   game = new Game();
@@ -33,14 +33,8 @@ void stagechecker() {
   game.gamedone();
 }
 
-void mouseClicked() {
-  if (stage == 0) {
-   // introscreen.mouseClickEvent();
-  }
-}
-
 void mouseDragged() {
- // introscreen.mouseClickEvent();
+  // introscreen.mouseClickEvent();
   game.mouseDraggedEvent(new PVector(mouseX, mouseY));
 }
 
@@ -48,8 +42,12 @@ void mouseReleased() {
   game.mouseReleasedEvent();
 }
 
-void mousePressed(){
+void mousePressed() {
   introscreen.mousePressedEvent();
+}
+
+void mouseMoved() {
+  introscreen.mouseMovedEvent(new PVector(mouseX, mouseY));
 }
 
 void keyPressed() {
