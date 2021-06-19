@@ -33,7 +33,7 @@ class IntroScreen {
     buildingLocation = new PVector(width +150, 0);
 
     buttonText = "START GAME";
-    welcomeText = "AIR HOCKEY ";
+    welcomeText = "AIRHOCKEY ";
     gameRules = "Welcome to our Airhockey game :) The rules are simple, just like in a normal airhockey game. Players can controll the controllers using the WSAD and the arrow keys. The starting player gets to start the game by dragging and shooting the puck in the opponets direction. Good luck and may the odds be ever in your favor.";
     myFont = createFont("Calibri Bold", 50);
     myFont2 = createFont("Calibri Bold", 25);
