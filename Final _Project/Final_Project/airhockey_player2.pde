@@ -4,7 +4,6 @@ class Player2 {
   PVector location, acceleration, distance;
   float sizeMain, sizeLight, sizeDark, speedWSAD;
   color main, light, dark; 
-  int score;
 
   Player2() {
     location = new PVector(width *3/4, height/2);
@@ -16,7 +15,6 @@ class Player2 {
     main = color(113, 209, 151); 
     light = color(128, 237, 172); 
     dark = color(78, 145, 105);
-    score = 0;
   }
 
   void run() {
@@ -47,11 +45,6 @@ class Player2 {
     if (distance.mag() < sizeLight) {                //    if (distance < 35)
       puck.acceleration.sub(distance.mult(0.2));
     }
-  }
-
-  int score(int points) {
-    score =+ points;
-    return score;
   }
 
   //void collision(Puck puck) {

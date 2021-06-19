@@ -14,7 +14,9 @@ class Stadium {
   }
 
   void underground() {
+    background(255);
     //underground with "airholes"
+    imageMode(CORNER);
     image(underground, 0, 0, width, height);
 
     //goals 

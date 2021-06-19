@@ -5,6 +5,7 @@ class Game {
   Player2 player2;
   Puck puck;
 
+  int score1, score2;
   boolean done; 
 
   Game() {
@@ -14,12 +15,13 @@ class Game {
     puck = new Puck();
 
     done = false;
+    score1 = 0;
+    score2 = 0;
   }
 
   void run() {
     stadium.underground();
     stadium.goal(puck);
-    //goals, class stadium
     stadium.borderPhysics(puck, player, player2);
     player.run();
     player2.run();
@@ -29,16 +31,17 @@ class Game {
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
   }
+
   void score (String scorer) {
     if (scorer.equals("p1")) {
-      player.score(1);
+      score1++;
     } else if (scorer.equals("p2")) {
-      player2.score(1);
+      score2++;
     }
   }
 
   boolean gamedone() { //when the character has reached the edge the intro is done
-    if (player.score(0) == 3 || player2.score(0) == 3) {
+    if (score1 == 3 || score2 == 3) {
       return true;
     } else {
       return false;

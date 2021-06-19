@@ -1,21 +1,20 @@
 class ParticleSystem {
-  ArrayList<Particle> particles;
+//  ArrayList<Particle> particles; //<>//
   PVector origin, mouse;
-  import java.util.Iterator;
   boolean click;
 
   ParticleSystem() {
-    particles = new ArrayList<Particle>();
+//    particles = new ArrayList<Particle>();
   }
 
   void addParticle() {
-    particles.add(new Particle(new PVector (random (width),random (height))));
+    particles.add(new Particle(new PVector (random (width), random (height))));
   }
 
   void run() {
     Iterator<Particle> it = particles.iterator();
     while (it.hasNext()) {
-      Particle p = it.next();
+      Particle p = it.next(); //<>//
       p.run();
       if (p.isDead()) {
         it.remove();
