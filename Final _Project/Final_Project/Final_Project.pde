@@ -29,8 +29,9 @@ void draw() {
 }
 
 void stagechecker() {
-  //introscreen.introdone();
-  game.gamedone();
+  if (introscreen.introdone() || game.gamedone()){
+    stage++;
+  } 
 }
 
 void mouseDragged() {

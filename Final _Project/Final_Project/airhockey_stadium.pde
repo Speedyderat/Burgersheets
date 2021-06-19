@@ -5,10 +5,10 @@ class Stadium {
 
   Stadium() {
     underground = loadImage("image/underground.png");
-    
+
     bordersize = 10;
     goalsize = 150;
-    
+
     uppergoal = height/2 - goalsize/2;
     lowergoal = height/2 + goalsize/2;
   }
@@ -16,13 +16,13 @@ class Stadium {
   void underground() {
     //underground with "airholes"
     image(underground, 0, 0, width, height);
-    
+
     //goals 
     stroke(0);
     strokeWeight(10);
     line(0, uppergoal, 0, lowergoal);
     line(width, uppergoal, width, lowergoal);
-    
+
     //potential add: middle dot / lines
   }
 
@@ -31,9 +31,9 @@ class Stadium {
       puck.reset();
       println("goal");
       if (puck.location.x < width/2) {
-        //game.score(true) +1;
+        game.score("p1");
       } else {
-        //game.score(false) +1;
+        game.score("p2");
       }
     }
   }

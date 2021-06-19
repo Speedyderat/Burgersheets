@@ -2,9 +2,9 @@
 
 class Player {
   PVector location, acceleration, distance;
-  float sizeMain, sizeLight, sizeDark, speedWSAD;
+  float sizeMain, sizeLight, sizeDark, speedWSAD, dist;
   color main, light, dark;
-  float dist;
+  int score;
 
   Player() {
     location = new PVector(width/4, height/2);
@@ -16,6 +16,7 @@ class Player {
     main = color(185, 201, 91); 
     light = color(209, 228, 102); 
     dark = color(150, 163, 73);
+    score = 0;
   }
 
   void run() {
@@ -47,6 +48,11 @@ class Player {
     {
       puck.acceleration.sub(distance.mult(0.2));
     }
+  }
+
+  int score(int points) {
+    score =+ points;
+    return score;
   }
 
   void keysPressedEvent() {

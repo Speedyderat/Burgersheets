@@ -62,7 +62,9 @@ class IntroScreen {
       if (samLocation.x > width *3/4 + 50) {
         samSpeed = 0;
 
-        if (doorReached && (samSize > 0 || samDepth > 0)) {
+        if (samSize == 0 || samDepth == 0) {
+          stage++;
+        } else if (doorReached && (samSize > 0 || samDepth > 0)) {
           samSize -= 7;
           samDepth -= 5;
         }
@@ -223,11 +225,11 @@ class IntroScreen {
     start += xSpeed;
   }
 
-  //boolean introdone() { //when the character has reached the edge the intro is done
-
-  //  return done;
-  //}
-
-  //void mouseClickEvent() {
-  //}
+  boolean introdone() { //when the character has reached the edge the intro is done
+    if (stage == 3) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

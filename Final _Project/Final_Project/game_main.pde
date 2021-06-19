@@ -29,10 +29,20 @@ class Game {
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
   }
+  void score (String scorer) {
+    if (scorer.equals("p1")) {
+      player.score(1);
+    } else if (scorer.equals("p2")) {
+      player2.score(1);
+    }
+  }
 
   boolean gamedone() { //when the character has reached the edge the intro is done
-
-    return done;
+    if (player.score(0) == 3 || player2.score(0) == 3) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void mouseDraggedEvent(PVector mouseLocation) {
