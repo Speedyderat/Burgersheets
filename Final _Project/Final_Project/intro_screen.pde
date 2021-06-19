@@ -1,7 +1,7 @@
 class IntroScreen {
 
-  int Stage;
-  boolean done, limit, isWalking, visable, activated, isClicked, hover;
+  int Stage, samDepth, samSize;
+  boolean limit, hover, doorReached;
   float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed, buildingSpeed;
   PImage sam, building;
   PVector samLocation, buttonLocation, text1Location, buildingLocation;
@@ -20,6 +20,9 @@ class IntroScreen {
     samSpeed = 5; // chamnge back to 2, this is so i dont have to wait 5h forh im to walk
     buildingSpeed = 5;
     limit = false;
+    doorReached = false;
+    samDepth = 255;
+    samSize = 700;
 
     sam = loadImage("image/stickfigure.png");
     building = loadImage("image/stadium.png");
@@ -27,7 +30,7 @@ class IntroScreen {
     samLocation = new PVector(220, 630);
     buttonLocation = new PVector(width/2+220, 600);
     text1Location = new PVector(width/2 - 50, 100);
-    buildingLocation = new PVector(width+150, 0);
+    buildingLocation = new PVector(width +150, 0);
 
     buttonText = "START GAME";
     welcomeText = "AIR HOCKEY ";
@@ -52,10 +55,17 @@ class IntroScreen {
     } else if (Stage == 1) {
       samSpeed = 0;
       introText();
+
+      // teuetueu
     } else if (Stage == 2) {
 
       if (samLocation.x > width *3/4 + 50) {
         samSpeed = 0;
+
+        if (doorReached && (samSize > 0 || samDepth > 0)) {
+          samSize -= 7;
+          samDepth -= 5;
+        }
       } else {
         samSpeed = 2;
       }
@@ -67,8 +77,10 @@ class IntroScreen {
 
   void sam() { // character sam 
     imageMode(CENTER);
-    sam.resize(0, 700);
+    sam.resize(0, samSize);
+    tint(255, samDepth);
     image(sam, samLocation.x, samLocation.y + i);
+    tint(255, 255);
     samLocation.x += samSpeed;    //adding movement for sam to walk into the screen
 
     //making the character move up and down
@@ -110,6 +122,7 @@ class IntroScreen {
 
     if (buildingLocation.x == 0) {
       buildingSpeed = 0;
+      doorReached = true;
     } else {
       buildingLocation.x -= buildingSpeed;    //adding movement for sam to walk into the screen
     }
