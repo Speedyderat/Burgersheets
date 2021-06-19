@@ -6,6 +6,7 @@ class IntroScreen {
   PImage sam;
   PVector samLocation, buttonLocation, text1Location;
   String buttonText, welcomeText, gameRules;
+  PFont myFont, myFont2;
 
 
   IntroScreen() {
@@ -16,19 +17,21 @@ class IntroScreen {
     yincrement3 = 0.002;
     start= 0;
     xSpeed = 0.001;
-    samSpeed = 2;
+    samSpeed = 5; // chamnge back to 2, this is so i dont have to wait 5h forh im to walk
     i=0;
     limit = false;
     sam = loadImage("image/stickfigure.png");
-    samLocation = new PVector(220, 610);
-    buttonLocation = new PVector(width/2, 100);
-    text1Location = new PVector(120, 210);
+    samLocation = new PVector(220, 630);
+    buttonLocation = new PVector(width/2+220, 600);
+    text1Location = new PVector(width/2 - 50, 100);
     isWalking = true;
     visable = true;
     activated = false;
     buttonText = "START GAME";
-    welcomeText = "AirHokey on steroids";
-    gameRules = "Welcome to our Airhockey game :) The rules are simple, just like in a normal airhockey game. Players can controll the controllers using the WSAD and the arrow keys. The starting player gets to start the game by dragging and shooting the puck in the opponets direction. Good luck and may the odds be in your favor";
+    welcomeText = "AIR HOCKEY ";
+    gameRules = "Welcome to our Airhockey game :) The rules are simple, just like in a normal airhockey game. Players can controll the controllers using the WSAD and the arrow keys. The starting player gets to start the game by dragging and shooting the puck in the opponets direction. Good luck and may the odds be ever in your favor.";
+    myFont = createFont("Calibri Bold", 50);
+    myFont2 = createFont("Calibri Bold", 25);
   }
 
   void display() {
@@ -51,11 +54,11 @@ class IntroScreen {
     image(sam, samLocation.x, samLocation.y + i);
 
     //making the character move up and down
-    if (!limit && i == 25) {
+    if (!limit && i == 20) {
       limit = true;
-    } else if (limit && i == -25) {
+    } else if (limit && i == -20) {
       limit = false;
-    } else if (!limit && i <= 25) {
+    } else if (!limit && i <= 20) {
       i++;
     } else {
       i--;
@@ -77,18 +80,20 @@ class IntroScreen {
   }
 
   void part2() { //character stays in the middle of the screen while the name of the game pops up
-    textSize(10);
-    //textAlign(CENTER);
-    text(welcomeText, text1Location.x, text1Location.y);
-    text(gameRules, text1Location.x, text1Location.y+100);
+    fill(250, 125, 121);
+    textFont(myFont);
+    text(welcomeText, text1Location.x - 50, text1Location.y);
+    fill(171, 209, 105);
+    textFont(myFont2);
+    text(gameRules, text1Location.x - 400, text1Location.y + 80, 900, 200);
     {
-      fill(200);
-      textSize(34);
+      fill(110, 255, 242);
+      textSize(35);
       if (over()) {
-        fill(255);
+        fill(186, 255, 161);
       }
       rect(buttonLocation.x, buttonLocation.y, textWidth(buttonText)+5, 55);
-      fill(0);
+      fill(250, 125, 121);
       text(buttonText, buttonLocation.x, buttonLocation.y + 40);
     }
   }
