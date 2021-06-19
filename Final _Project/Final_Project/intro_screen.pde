@@ -1,7 +1,7 @@
 class IntroScreen {
 
   int stage;
-  boolean done, limit, isWalking, visable, activated;
+  boolean done, limit, isWalking, visable, activated, isClicked;
   float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed;
   PImage sam;
   PVector samLocation, buttonLocation, text1Location;
@@ -27,6 +27,7 @@ class IntroScreen {
     isWalking = true;
     visable = true;
     activated = false;
+    isClicked = false;
     buttonText = "START GAME";
     welcomeText = "AIR HOCKEY ";
     gameRules = "Welcome to our Airhockey game :) The rules are simple, just like in a normal airhockey game. Players can controll the controllers using the WSAD and the arrow keys. The starting player gets to start the game by dragging and shooting the puck in the opponets direction. Good luck and may the odds be ever in your favor.";
@@ -40,11 +41,15 @@ class IntroScreen {
     if (stage == 0) {
       part1();
       walkingSam();
+      println(1);
     } else if (stage == 1) {
       part2();
-      over();
+      hover();
+      buttonPressed();
+      println(2);
     } else if (stage == 2) {
       part3();
+      println(3);
     }
   }
 
@@ -80,16 +85,19 @@ class IntroScreen {
   }
 
   void part2() { //character stays in the middle of the screen while the name of the game pops up
+    //introducing the game
     fill(250, 125, 121);
     textFont(myFont);
     text(welcomeText, text1Location.x - 50, text1Location.y);
     fill(171, 209, 105);
     textFont(myFont2);
     text(gameRules, text1Location.x - 400, text1Location.y + 80, 900, 200);
+
+    //function for the start button. 
     {
       fill(110, 255, 242);
       textSize(35);
-      if (over()) {
+      if (hover()) {
         fill(186, 255, 161);
       }
       rect(buttonLocation.x, buttonLocation.y, textWidth(buttonText)+5, 55);
@@ -98,21 +106,25 @@ class IntroScreen {
     }
   }
 
-
-  boolean over() {
+  // making the button work like a button, if the mouse is over it, it changes color
+  boolean hover() {
     if (mouseX >= buttonLocation.x && mouseY >= buttonLocation.y && mouseX <= buttonLocation.x + textWidth(buttonText) && mouseY <= buttonLocation.y + 55) {
       return true;
     }
     return false;
   }
 
+  //making the button clickable
   void buttonPressed() {
-    if (over()) {
+    if (hover()) {
       println("Whoo clicky!");
+      stage = stage+1;
+      println(stage);
     }
   }
 
   void part3() { //character moves to the right side until it has reached it
+    println("NEW NEW!");
   }
 
 
