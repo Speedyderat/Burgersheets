@@ -1,4 +1,6 @@
-// Player class for the paddle on the left of the screen, handles movement and collision
+// Player class
+
+// handles the paddle on the left of the screen, handles movement and collision.
 // class inspired by https://openprocessing.org/sketch/975642 code by Andreas
 
 class Player {
