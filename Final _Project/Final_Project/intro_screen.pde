@@ -131,6 +131,8 @@ class IntroScreen {
   void mouseMovedEvent(PVector mouse) {
     if (mouse.x >= buttonLocation.x && mouse.y >= buttonLocation.y && mouse.x <= buttonLocation.x + textWidth(buttonText) && mouse.y <= buttonLocation.y + 55) {
       hover = true;
+    } else {
+    hover = false;
     }
   }
 
