@@ -57,13 +57,13 @@ class Game {
     score = false;
   }
 
-  boolean gamedone() { //when the character has reached the edge the intro is done
+  boolean gamedone() {                                      //when one of the players has scroed 3 points the game is done
     if ((score1 == 3 || score2 == 3)) {
       if (score1==3) {
-        woop = true;
+        woop = true;                                       // if woop is true then in the outro screen player 1 is the winner 
       }
       if (score2 == 3) {
-        woop2 = true;
+        woop2 = true;                                      // if woop2 is true then in the outro screen player 2 is the winner 
       }
       return true;
     } else {
@@ -71,21 +71,20 @@ class Game {
     }
   }
 
-  void mouseDraggedEvent(PVector mouseLocation) {
+  void mouseDraggedEvent(PVector mouseLocation) {          // handles the mouse dragged event from puck
     puck.mouseDraggedEvent(mouseLocation);
   }
 
-  void mouseReleasedEvent() {
+  void mouseReleasedEvent() {                              // handles the mouse released event from puck
     puck.mouseReleasedEvent();
   }
 
-
-  void keyPressedEvent() {
+  void keyPressedEvent() {                                 // handles the key pressed events from the player classes 
     player.keysPressedEvent();
     player2.keysPressedEvent();
   }
 
-  void keysReleasedEvent() {
+  void keysReleasedEvent() {                               // handles the key released events from the player classes 
     player.keysReleasedEvent();
     player2.keysReleasedEvent();
   }

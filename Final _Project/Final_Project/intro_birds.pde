@@ -6,7 +6,6 @@
 // Daniel Shiffman
 // http://natureofcode.com
 
-
 class Bird {
 
   PVector position, velocity, acceleration, correction;

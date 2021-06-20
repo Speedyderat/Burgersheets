@@ -13,38 +13,33 @@ class Stadium {
     bordersize = 10;
     goalsize = 150;
 
-    uppergoal = height/2 - goalsize/2; //creates two variables that depend on the goalsize (height/2 so the middle of the goal is in the middle of the screen)
+    uppergoal = height/2 - goalsize/2;                                  //creates two variables that depend on the goalsize (height/2 so the middle of the goal is in the middle of the screen)
     lowergoal = height/2 + goalsize/2;
   }
 
-  void underground() {
-    //background with "airholes"
-    imageMode(CORNER);
+  void underground() {     
+    imageMode(CORNER);                                                  //background picture of the air hockey stand
     image(underground, 0, 0, width, height);
 
-    //creates the goals 
-    stroke(0);
+    stroke(0);                                                          //creates the goals 
     strokeWeight(10);
     line(0, uppergoal, 0, lowergoal);
     line(width, uppergoal, width, lowergoal);
-
-    //possible addition to add would be a border around the stadium and a overhanging railing (see basic air hockey arcade machine)
   }
 
-  void goal(Puck puck) {
+  void goal(Puck puck) {                                                // calculates wheather there has been a goal
     if (((puck.location.y >= uppergoal) && (puck.location.y <= lowergoal)) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
-      puck.reset();
+      puck.reset();                                                     //if there was a goal, the puck returns to its original placement
       game.score("score");
-      if (puck.location.x < width/2) {
+      if (puck.location.x < width/2) {                                  // if the location of the puck was on the right side where the goal is, then it is a score for player 2
         game.score("p2");
-      } else {
+      } else {                                                          // otherwise if it is on the left side where the goal is then it is a score for player 1
         game.score("p1");
       }
     }
   }
 
   void borderPhysics(Puck puck, Player player, Player2 player2) { //very long block of code for the borders of the stadium, first part is for the puck, second part is for player 1 and the last part is for player 2
-
 
     //borders for the puck
     if ((puck.location.y <= bordersize) || (puck.location.y >= height-bordersize)) {                                          // Y axies borders for the puck
