@@ -42,7 +42,7 @@ class Game {
     //details, maybe the railing in the middle, class stadium
   }
 
-  void score (String scorer) { //class that handles all the scoring related events, We have used strings to have easier to use and read variables at the expense of a bit more memory usage
+  void score (String scorer) {                              //class that handles all the scoring related events, We have used strings to have easier to use and read variables at the expense of a bit more memory usage
     if (scorer.equals("p1")) {                              //if the input equals p1, then the score for player1 goes up by 1
       score1++;
     } else if (scorer.equals("p2")) {                       //if the input equals p1, then the score for player2 goes up by 1
