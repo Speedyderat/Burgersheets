@@ -16,8 +16,8 @@ class ParticleSystem {
   void update() { //make the particles come from the tip of the wand, kill them off when the lifetime is too low and make them reappear at the wand
     for (int i=0; i < particles.length; i++) {
       if (particles[i].isDead()) {
-        particles[i].lifetime= int(random(100, 255));
-        particles[i].velocity = new PVector(random(-10, 10), -10);
+        //particles[i].lifetime= int(random(100, 255));
+       // particles[i].velocity = new PVector(random(-10, 10), -10);
       }
       particles[i].update();
     }

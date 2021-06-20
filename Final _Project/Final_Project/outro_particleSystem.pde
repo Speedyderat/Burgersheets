@@ -1,5 +1,5 @@
 class ParticleSystem { //<>// //<>//
-  Particle[] particles; //<>//
+  Particle[] particles; 
 
   ParticleSystem() { //spawn all particles in an explosion-like way in the beginning
     particles = new Particle [440];
@@ -10,18 +10,14 @@ class ParticleSystem { //<>// //<>//
 
 
   void update() { //explosion
-    //println("Ï am the problem"); 
     for (int i=0; i < particles.length; i++) {
-      //println("am i in");
       if (particles[i].isDead()) {
-        println(" i done"); //<>//
-        particles[i].lifetime= int(random(100, 255));
+        particles[i].lifespan= int(random(100, 255));
         particles[i].velocity = new PVector(random(-10, 10), -10);
       }
       particles[i].update();
     }
   }
-
 
   void display() { //display every particle on it's own
     for (int i=0; i < particles.length; i++) {
