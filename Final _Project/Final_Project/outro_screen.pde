@@ -14,11 +14,6 @@ class OutroScreen {
     player1 = loadImage("image/player1.png");
     player2 = loadImage("image/player2.png");
 
-    // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
-    xloc = randomGaussian();
-    yloc = randomGaussian();
-    normalvariablename  = randomGaussian();
-
     sd = 20;                                               // Define a standard deviation
     nsd = 10;
     mean = width/2;                                        // Define a mean value (middle of the screen along the x-axis)
@@ -35,10 +30,10 @@ class OutroScreen {
 
     if (game.woop == true) {                                      //checks which player won and displayes the coresponding picture for them
       image(player1, width/2, height/2);
-      glistening();
+      glistening();                                               // glistening effect on the cup
     } else if (game.woop2 == true) {
       image(player2, width/2, height/2);
-      glistening();
+      glistening();                                               // glistening effect on the cup
     }
   }
 
@@ -47,7 +42,7 @@ class OutroScreen {
     xloc = randomGaussian();
     yloc = randomGaussian();
     normalvariablename  = randomGaussian();
-    
+
     xloc = ( xloc * sd ) + mean;                                 // Scale the gaussian random number by standard deviation and mean
     yloc = ( yloc * sd ) + mean2;                                 // Scale the gaussian random number by standard deviation and bean
     normalvariablename  = ( normalvariablename *  nsd ) + random(0, 20);
