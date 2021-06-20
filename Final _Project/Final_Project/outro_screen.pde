@@ -1,3 +1,8 @@
+// outro screen, winner screen
+
+//In our outro / winner screen the winner will be presented and congratulated on his achievement accompanied by an explosion of confetti made possible by our particle system, 
+//the game is finished.
+
 class OutroScreen {
   ParticleSystem particleSystem;
   PImage player1, player2, background;

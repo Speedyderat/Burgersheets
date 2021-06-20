@@ -1,3 +1,11 @@
+//introduction screen
+
+//In the introduction screen we introduce the title and the rules of the game, 
+//while in the background perlin noise is used and flocks of birds can be seen flying around. 
+//It consists of multiple stages, where our character, Sam can be seen walking into the screen, 
+//then staying in the middle while the title and game rules can be seen and when clicking on start game, 
+//he walks into the Air Hockey stadium. Which opens the actual game.
+
 class IntroScreen {
 
   Background background;
@@ -14,7 +22,7 @@ class IntroScreen {
     background = new Background();
 
     Stage = 0;
-    samSpeed = 5; // change back to 2, this is so i dont have to wait 5h forh im to walk
+    samSpeed = 2; // change back to 2, this is so i dont have to wait 5h forh im to walk
     buildingSpeed = 5;
     samDepth = 255;
     samSize = 700;

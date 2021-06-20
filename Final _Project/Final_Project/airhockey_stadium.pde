@@ -24,14 +24,11 @@ class Stadium {
     strokeWeight(10);
     line(0, uppergoal, 0, lowergoal);
     line(width, uppergoal, width, lowergoal);
-
-    //potential add: middle dot / lines
   }
 
   void goal(Puck puck) {
     if (((puck.location.y >= uppergoal) && (puck.location.y <= lowergoal)) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
       puck.reset();
-      println("goal");
       game.score("score");
       if (puck.location.x < width/2) {
         game.score("p2");
@@ -105,7 +102,7 @@ class Stadium {
       player2.acceleration.y =- player2.acceleration.y;
     }
 
-    if ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)) {                                     // X axies borders for player 2
+    if ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)) {                                   // X axies borders for player 2
 
       if (player2.location.x < width/2) {
         player2.location.x = bordersize;

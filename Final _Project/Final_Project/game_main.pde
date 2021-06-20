@@ -1,3 +1,12 @@
+//The Air Hockey game
+
+//The game starts of with player 1 and player 2, both need to be moved by players because we did not have the time to realize an actual robot to play against. 
+//First off, the puck needs to be shot from the middle by any of the two players, this has been done with knowledge from the catapult assignment. 
+//Because the mouse can be operated by both players the responsibility is by the players themselves to discuss who gets to shoot. 
+//After this the game can begin and by use of the WASD and arrow keys both players can move their paddels and try to get the puck in the goals on either side of the screen. 
+//Physics are used to make the interaction between the paddles and puck happen. The score gets registered and the first player to score 3 goals wins. 
+//After which the outro screen comes up.
+
 class Game {
 
   Stadium stadium;
