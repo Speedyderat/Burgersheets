@@ -1,4 +1,4 @@
-// class created using https://openprocessing.org/sketch/975642 code by Andreas
+// class inspired by https://openprocessing.org/sketch/975642 code by Andreas
 
 class Player2 {
   PVector location, acceleration, distance;
