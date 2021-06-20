@@ -35,7 +35,6 @@ void stagechecker() {
 }
 
 void mouseDragged() {
-  // introscreen.mouseClickEvent();
   game.mouseDraggedEvent(new PVector(mouseX, mouseY));
 }
 

@@ -18,7 +18,7 @@ class Boid {
     acceleration = new PVector(0, 0);
     velocity = new PVector(random(-1, 1), random(-1, 1));
     position = new PVector(x, y);
-    radius = 3.0;
+    radius = 3;
     maxspeed = 3;
     maxforce = 0.05;
     colourR = random(255);                                            //randomization of coulors
@@ -86,19 +86,24 @@ class Boid {
     // Draw a triangle rotated in the direction of velocity
     float theta = velocity.heading2D() + radians(90);
     fill(175);
-    stroke(0);
+    noStroke();
     pushMatrix();
     translate(position.x, position.y);
     rotate(theta);
     fill(colourR, colourG, colourB);                       //random colours for every particle and a lifespan
-    ellipse(0, -radius*2, 7, 7);
+    triangle(-20, -10, 0, -5, 0, 5);
+    triangle(20, -10, 0, -5, 0, 5);
+    triangle(-5, 15, 0, -5, 5, 15);
+    triangle(-5, 15, 0, -5, 5, 15);
+    ellipse(0, 0, 10, 20);
+    ellipse(0, -10, 5, 5);
     popMatrix();
   }
 
   PVector borders() {
-    
+
     PVector steer = new PVector(0, 0, 0);
-    
+
     if (position.x < -radius+50) {
       correction = new PVector(maxspeed, velocity.y);
     } else if (position.x > width +radius -50) {
