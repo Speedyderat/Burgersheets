@@ -1,4 +1,6 @@
-class ParticleSystem { //<>// //<>//
+// The following particle system class introduces the particle system. It takes the particle from class particle and makes more of them and adds the dynamics for them to act like an explosion of particles.  //<>// //<>//
+
+class ParticleSystem {
   Particle[] particles;
 
   ParticleSystem() {                                                 //explosion behaviour sarter
