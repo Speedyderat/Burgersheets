@@ -1,25 +1,25 @@
-class Background { //the continuesly moving background in intro
+//This class handles the continuesly moving background in intro, including a set of birds flying around
+class Background { 
   Flock flock;
-
   float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start;
 
   Background() {
-    yincrement1 = 0.004;    //changes the sharpness or smoothness level of the mountains
+    yincrement1 = 0.004;                                               //changes the sharpness or smoothness level of the mountains
     yincrement2 = 0.003;
     yincrement3 = 0.002;
     xSpeed = 0.001;
 
-    flock = new Flock();  // Add an initial set of birds into the system
+    flock = new Flock();                                              // Add an initial set of birds into the system
     for (int i = 0; i < 10; i++) {
-      Bird b = new Bird(width/2, height/2);
-      flock.addBird(b);
+      Bird bird = new Bird(width/2, height/2);
+      flock.addBird(bird);
     }
   }
 
   void hills() {
     noStroke(); 
 
-    //mountain 1
+    //mountain 1, big increments therefore sharper mountains, creates a more realistic illusion 
     fill( 251, 197, 196);
 
     beginShape();
@@ -28,7 +28,7 @@ class Background { //the continuesly moving background in intro
 
     for (float x = 0; x < width; x++) {
       stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 100, 250); // location of the mountains
+      float y = map(noise(xoff) * height, 0, height, 100, 250);        // location of the mountains
       vertex(x, y);
       xoff += yincrement1;
     }
@@ -38,9 +38,9 @@ class Background { //the continuesly moving background in intro
 
     start += xSpeed;
 
-    flock.run();
+    flock.run();                                                       // adding the bird flock here because then it hides in the mountains anf creates a realistic illusion of distance 
 
-    //mountain 2
+    //mountain 2, smaller increments therefore smoother mountains, creates a more realistic illusion 
     fill(252, 162, 139);
 
     beginShape();
@@ -49,7 +49,7 @@ class Background { //the continuesly moving background in intro
 
     for (float x = 0; x < width; x++) {
       stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 300, 450); // location of the mountains
+      float y = map(noise(xoff) * height, 0, height, 300, 450);       // location of the mountains
       vertex(x, y);
       xoff += yincrement2;
     }
@@ -59,7 +59,7 @@ class Background { //the continuesly moving background in intro
 
     start += xSpeed;
 
-    //mountain 3
+    //mountain 3, very small increments therefore almost flat mountains, creates a more realistic illusion 
     fill(250, 125, 121);
 
     beginShape();
@@ -68,7 +68,7 @@ class Background { //the continuesly moving background in intro
 
     for (float x = 0; x < width; x++) {
       stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 500, 550); // location of the mountains
+      float y = map(noise(xoff) * height, 0, height, 500, 550);         // location of the mountains
       vertex(x, y);
       xoff += yincrement3;
     }
