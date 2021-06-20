@@ -9,10 +9,10 @@ class Background { //the continuesly moving background in intro
     yincrement3 = 0.002;
     xSpeed = 0.001;
 
-    flock = new Flock();  // Add an initial set of boids into the system
+    flock = new Flock();  // Add an initial set of birds into the system
     for (int i = 0; i < 10; i++) {
-      Boid b = new Boid(width/2, height/2);
-      flock.addBoid(b);
+      Bird b = new Bird(width/2, height/2);
+      flock.addBird(b);
     }
   }
 

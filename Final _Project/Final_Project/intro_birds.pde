@@ -2,10 +2,10 @@
 // Daniel Shiffman
 // http://natureofcode.com
 
-// Boid class
+// Bird class
 // Methods for Separation, Cohesion, Alignment added
 
-class Boid {
+class Bird {
 
   PVector position, velocity, acceleration, correction;
   float radius;
@@ -14,7 +14,7 @@ class Boid {
   float colourR, colourG, colourB;
   //Obstacle obstacle;
 
-  Boid(float x, float y) {
+  Bird(float x, float y) {
     acceleration = new PVector(0, 0);
     velocity = new PVector(random(-1, 1), random(-1, 1));
     position = new PVector(x, y);
@@ -26,8 +26,8 @@ class Boid {
     colourB = random(255);
   }
 
-  void run(ArrayList<Boid> boids/*, Obstacle obstacle*/ ) {
-    flock(boids/*, obstacle*/);
+  void run(ArrayList<Bird> birds/*, Obstacle obstacle*/ ) {
+    flock(birds/*, obstacle*/);
     update();
     render();
   }
@@ -38,10 +38,10 @@ class Boid {
   }
 
   // We accumulate a new acceleration each time based on three rules
-  void flock(ArrayList<Boid> boids/*, Obstacle obstacle*/) {
-    PVector sep = separate(boids);   // Separation
-    PVector ali = align(boids);      // Alignment
-    PVector coh = cohesion(boids);   // Cohesion
+  void flock(ArrayList<Bird> birds/*, Obstacle obstacle*/) {
+    PVector sep = separate(birds);   // Separation
+    PVector ali = align(birds);      // Alignment
+    PVector coh = cohesion(birds);   // Cohesion
     //PVector avo = avoidance(obstacle);
     PVector bor = borders();
     // Arbitrarily weight these forces
@@ -126,13 +126,13 @@ class Boid {
   }  
 
   // Separation
-  // Method checks for nearby boids and steers away
-  PVector separate (ArrayList<Boid> boids) {
+  // Method checks for nearby birds and steers away
+  PVector separate (ArrayList<Bird> birds) {
     float desiredseparation = 25.0f;
     PVector steer = new PVector(0, 0, 0);
     int count = 0;
-    // For every boid in the system, check if it's too close
-    for (Boid other : boids) {
+    // For every bird in the system, check if it's too close
+    for (Bird other : birds) {
       float d = PVector.dist(position, other.position);
       // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
       if ((d > 0) && (d < desiredseparation)) {
@@ -161,13 +161,13 @@ class Boid {
   }
 
   //// Avoidance
-  //// Method checks for nearby boids and steers away
+  //// Method checks for nearby birds and steers away
   //PVector avoidance (Obstacle obstacle) {
 
   //  float desiredseparation = obstacle.radiusObstacle;
   //  PVector steer = new PVector(0, 0, 0);
 
-  //  // For every boid in the system, check if it's too close
+  //  // For every bird in the system, check if it's too close
   //  float d = PVector.dist(position, obstacle.location);
   //  // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
   //  if ((d > 0) && (d < desiredseparation)) {
@@ -193,12 +193,12 @@ class Boid {
 
 
   // Alignment
-  // For every nearby boid in the system, calculate the average velocity
-  PVector align (ArrayList<Boid> boids) {
+  // For every nearby bird in the system, calculate the average velocity
+  PVector align (ArrayList<Bird> birds) {
     float neighbordist = 50;
     PVector sum = new PVector(0, 0);
     int count = 0;
-    for (Boid other : boids) {
+    for (Bird other : birds) {
       float d = PVector.dist(position, other.position);
       if ((d > 0) && (d < neighbordist)) {
         sum.add(other.velocity);
@@ -218,12 +218,12 @@ class Boid {
   }
 
   // Cohesion
-  // For the average position (i.e. center) of all nearby boids, calculate steering vector towards that position
-  PVector cohesion (ArrayList<Boid> boids) {
+  // For the average position (i.e. center) of all nearby birds, calculate steering vector towards that position
+  PVector cohesion (ArrayList<Bird> birds) {
     float neighbordist = 50;
     PVector sum = new PVector(0, 0);   // Start with empty vector to accumulate all positions
     int count = 0;
-    for (Boid other : boids) {
+    for (Bird other : birds) {
       float d = PVector.dist(position, other.position);
       if ((d > 0) && (d < neighbordist)) {
         sum.add(other.position); // Add position

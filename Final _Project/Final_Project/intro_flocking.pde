@@ -3,22 +3,22 @@
 // http://natureofcode.com
 
 // Flock class
-// Does very little, simply manages the ArrayList of all the boids
+// Does very little, simply manages the ArrayList of all the birds
 
 class Flock {
-  ArrayList<Boid> boids; // An ArrayList for all the boids
+  ArrayList<Bird> birds; // An ArrayList for all the birds
 
   Flock() {
-    boids = new ArrayList<Boid>(); // Initialize the ArrayList
+    birds = new ArrayList<Bird>(); // Initialize the ArrayList
   }
 
   void run() {
-    for (Boid boid : boids) {
-      boid.run(boids/*, obstacle*/);  // Passing the entire list of boids to each boid individually
+    for (Bird boid : birds) {
+      boid.run(birds);  // Passing the entire list of birds to each boid individually
     }
   }
 
-  void addBoid(Boid boid) {
-    boids.add(boid);
+  void addBird(Bird boid) {
+    birds.add(boid);
   }
 }
