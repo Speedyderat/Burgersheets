@@ -18,27 +18,29 @@ class OutroScreen {
     imageMode(CORNER);
     image(background, 0, 0);
     imageMode(CENTER);
-    splash();
+
     particleSystem.update();                                      // shows the particle explosion selebration effect
     particleSystem.display();
 
     if (game.woop == true) {                                      //checks which player won and displayes the coresponding picture for them
       image(player1, width/2, height/2);
+      glistening();
     } else if (game.woop2 == true) {
       image(player2, width/2, height/2);
+      glistening();
     }
   }
 
-  void splash() {
+  void glistening() {
     // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
     float xloc = randomGaussian();
     float yloc = randomGaussian();
     float normalvariablename  = randomGaussian();
 
-    float sd = 60;                // Define a standard deviation
-    float nsd = 20;
+    float sd = 20;                // Define a standard deviation
+    float nsd = 10;
     float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
-    float bean = height/2;
+    float bean = height/2+75;
     xloc = ( xloc * sd ) + mean;  // Scale the gaussian random number by standard deviation and mean
     yloc = ( yloc * sd ) + bean;  // Scale the gaussian random number by standard deviation and bean
     normalvariablename  = ( normalvariablename *  nsd ) + random(0, 20);
