@@ -11,13 +11,13 @@ class Particle {
     velocity = new PVector(random(-20, 20), random(-20, 20));
     gravity = new PVector(0, 0.3);
     lifespan =  int(random(100, 255));
-    
-    colourR = random(255);                                            //randomization of coulors
+
+    colourR = random(255);                                            //randomization of colors
     colourG = random(255);
     colourB = random(255);
   }
 
-  void display() {                                                   //drawiing the particle
+  void display() {                                                   //drawing the particle
     noStroke();
     fill(colourR, colourG, colourB, lifespan * 0.5);
     ellipse(location.x, location.y, 15, 15);

@@ -18,10 +18,10 @@ class OutroScreen {
     imageMode(CORNER);
     image(background, 0, 0);
     imageMode(CENTER);
-    particleSystem.update();                                      // shows the particle explosion selebration effect
+    particleSystem.update();                                      // shows the particle explosion celebration effect
     particleSystem.display();
 
-    if (game.woop == true) {                                      //checks which player won and displayes the coresponding picture for them
+    if (game.woop == true) {                                      //checks which player won and displays the coresponding picture for them
       image(player1, width/2, height/2);
     } else if (game.woop2 == true) {
       image(player2, width/2, height/2);
