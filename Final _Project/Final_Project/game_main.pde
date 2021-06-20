@@ -6,7 +6,7 @@ class Game {
   Puck puck;
 
   int score1, score2;
-  boolean done, woop, woop2; 
+  boolean done, woop, woop2, score; 
 
   Game() {
     stadium = new Stadium();
@@ -21,6 +21,7 @@ class Game {
 
   void run() {
     stadium.underground();
+    score("display");
     stadium.goal(puck);
     stadium.borderPhysics(puck, player, player2);
     player.run();
@@ -37,11 +38,18 @@ class Game {
       score1++;
     } else if (scorer.equals("p2")) {
       score2++;
+    } else if (scorer.equals("display")) {
+      textSize(25);
+      textAlign(CENTER);
+      text("p1 " + score1 + "  p2 " + score2, width/2, 30);
+    } else if (scorer.equals("score")) {
+      score = true;
     }
+    score = false;
   }
 
   boolean gamedone() { //when the character has reached the edge the intro is done
-    if (score1 == 3 || score2 == 3) {
+    if ((score1 == 3 || score2 == 3)) {
       if (score1==3) {
         woop = true;
       }

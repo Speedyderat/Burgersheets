@@ -32,10 +32,11 @@ class Stadium {
     if (((puck.location.y >= uppergoal) && (puck.location.y <= lowergoal)) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
       puck.reset();
       println("goal");
+      game.score("score");
       if (puck.location.x < width/2) {
-        game.score("p1");
-      } else {
         game.score("p2");
+      } else {
+        game.score("p1");
       }
     }
   }

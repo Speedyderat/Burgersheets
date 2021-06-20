@@ -19,7 +19,7 @@ void setup() {
   // particleSystem = new ParticleSystem();
 
 
-  stage = 1;
+  stage = 0;
 }
 
 void draw() {
@@ -36,7 +36,7 @@ void draw() {
 }
 
 void stagechecker() {
-  if (introscreen.introdone() || game.gamedone()) {
+  if (stage != 2 && (introscreen.introdone() || game.gamedone())) {
     stage++;
   }
 }
