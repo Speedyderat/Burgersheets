@@ -17,12 +17,11 @@ class IntroScreen {
   PFont myFont, myFont2;
   String buttonText, welcomeText, gameRules;
 
-
   IntroScreen() {
     background = new Background();
 
     Stage = 0;
-    samSpeed = 2; // change back to 2, this is so i dont have to wait 5h forh im to walk
+    samSpeed = 2; 
     buildingSpeed = 5;
     samDepth = 255;
     samSize = 700;
@@ -61,12 +60,13 @@ class IntroScreen {
       samSpeed = 0;
       introText();
 
-      // in stage
+      // in stage 2 after the start button is pressed, sam continues to walk out of the screen and into the stadium building
     } else if (Stage == 2) {
 
       if (samLocation.x > width *3/4 + 50) {
         samSpeed = 0;
 
+        //when sam is small and dissapears the stage changes into the game
         if (samSize == 0 || samDepth == 0) {
           stage++;
         } else if (doorReached && (samSize > 0 || samDepth > 0)) {
@@ -82,15 +82,16 @@ class IntroScreen {
     sam();
   }
 
-  void sam() { // character sam 
+  // character sam 
+  void sam() {                                                       
     imageMode(CENTER);
     sam.resize(0, samSize);
     tint(255, samDepth);
     image(sam, samLocation.x, samLocation.y + i);
     tint(255, 255);
-    samLocation.x += samSpeed;    //adding movement for sam to walk into the screen
+    samLocation.x += samSpeed;                                       //adding movement for sam to walk into the screen
 
-    //making the character move up and down
+    //making sam move up and down
     if (!limit && i == 20) {
       limit = true;
     } else if (limit && i == -20) {
@@ -102,8 +103,9 @@ class IntroScreen {
     }
   }
 
-  void introText() { //character stays in the middle of the screen while the name of the game pops up
-    //introducing the game
+  //character stays in the middle of the screen while the name of the game pops up
+  void introText() {                                                 
+    //game name (doubel text for a 3D effect)
     fill(122, 61, 59);
     textFont(myFont);
     text(welcomeText, text1Location.x - 47, text1Location.y+3);
@@ -111,6 +113,7 @@ class IntroScreen {
     textFont(myFont);
     text(welcomeText, text1Location.x - 50, text1Location.y);
 
+    //game rules (doubel text for a 3D effect)
     fill(67, 92, 92);
     textFont(myFont2);
     text(gameRules, text1Location.x - 399, text1Location.y + 81, 900, 200);
@@ -130,7 +133,6 @@ class IntroScreen {
   }
 
   void building() {
-
     imageMode(CORNER);
     image(building, buildingLocation.x, buildingLocation.y);
 
@@ -138,7 +140,7 @@ class IntroScreen {
       buildingSpeed = 0;
       doorReached = true;
     } else {
-      buildingLocation.x -= buildingSpeed;    //adding movement for sam to walk into the screen
+      buildingLocation.x -= buildingSpeed;                           //adding movement for sam to walk out of the screen
     }
   }
 
@@ -151,7 +153,7 @@ class IntroScreen {
     }
   }
 
-  boolean introdone() { //when the character has reached the edge the intro is done
+  boolean introdone() {                                              //when the character has reached the right edge the intro is done
     if (stage == 3) {
       return true;
     } else {
@@ -159,7 +161,7 @@ class IntroScreen {
     }
   }
 
-  //making the button clickable
+  //making the button clickable only if it is in the right margin 
   void mousePressedEvent() {
     if (hover) {
       Stage++;
