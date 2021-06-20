@@ -1,5 +1,9 @@
+// outro screen, winner screen
+
+//In our outro / winner screen the winner will be presented and congratulated on his achievement accompanied by an explosion of confetti made possible by our particle system, 
+//the game is finished.
+
 class OutroScreen {
-  //  Game game;
   ParticleSystem particleSystem;
   PImage player1, player2, background;
 
@@ -13,14 +17,13 @@ class OutroScreen {
   void display(Game game) {
     imageMode(CORNER);
     image(background, 0, 0);
-    particleSystem.run();
-    particleSystem.addParticle();
     imageMode(CENTER);
-    if (game.woop == true) {
+    particleSystem.update();                                      // shows the particle explosion selebration effect
+    particleSystem.display();
+
+    if (game.woop == true) {                                      //checks which player won and displayes the coresponding picture for them
       image(player1, width/2, height/2);
-      println("aaaah");
     } else if (game.woop2 == true) {
-      println("aaaah");
       image(player2, width/2, height/2);
     }
   }

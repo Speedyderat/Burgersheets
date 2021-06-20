@@ -1,3 +1,7 @@
+// stadium class 
+
+// handles the look of the air hockey playing environment, the scoring event and the border collision with the puck and paddles.
+
 class Stadium {
 
   PImage underground;
@@ -9,33 +13,32 @@ class Stadium {
     bordersize = 10;
     goalsize = 150;
 
-    uppergoal = height/2 - goalsize/2;
+    uppergoal = height/2 - goalsize/2; //creates two variables that depend on the goalsize (height/2 so the middle of the goal is in the middle of the screen)
     lowergoal = height/2 + goalsize/2;
   }
 
   void underground() {
-    background(255);
-    //underground with "airholes"
+    //background with "airholes"
     imageMode(CORNER);
     image(underground, 0, 0, width, height);
 
-    //goals 
+    //creates the goals 
     stroke(0);
     strokeWeight(10);
     line(0, uppergoal, 0, lowergoal);
     line(width, uppergoal, width, lowergoal);
 
-    //potential add: middle dot / lines
+    //possible addition to add would be a border around the stadium and a overhanging railing (see basic air hockey arcade machine)
   }
 
   void goal(Puck puck) {
     if (((puck.location.y >= uppergoal) && (puck.location.y <= lowergoal)) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
       puck.reset();
-      println("goal");
+      game.score("score");
       if (puck.location.x < width/2) {
-        game.score("p1");
-      } else {
         game.score("p2");
+      } else {
+        game.score("p1");
       }
     }
   }
@@ -104,7 +107,7 @@ class Stadium {
       player2.acceleration.y =- player2.acceleration.y;
     }
 
-    if ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)) {                                     // X axies borders for player 2
+    if ((player2.location.x <= bordersize) || (player2.location.x >= width - bordersize)) {                                   // X axies borders for player 2
 
       if (player2.location.x < width/2) {
         player2.location.x = bordersize;
