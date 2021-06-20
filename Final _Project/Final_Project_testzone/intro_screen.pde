@@ -67,7 +67,7 @@ class IntroScreen {
         samSpeed = 0;
 
         //when sam is small and dissapears the stage changes into the game
-        if (samSize == 0 || samDepth == 0) {
+        if (stage == 2 && (samSize == 0 || samDepth == 0)) {
           stage++;
         } else if (doorReached && (samSize > 0 || samDepth > 0)) {
           samSize -= 7;
@@ -78,6 +78,7 @@ class IntroScreen {
       }
 
       building();
+      splash();
     }
     sam();
   }
@@ -154,7 +155,7 @@ class IntroScreen {
   }
 
   boolean introdone() {                                              //when the character has reached the right edge the intro is done
-    if (stage == 3) {
+    if (stage == 4) {
       return true;
     } else {
       return false;
@@ -165,6 +166,27 @@ class IntroScreen {
   void mousePressedEvent() {
     if (hover) {
       Stage++;
+    }
+  }
+
+  void splash () {
+    if (stage == 3) {
+      // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
+      float xloc = randomGaussian();
+      float yloc = randomGaussian();
+      float normalvariablename  = randomGaussian();
+
+      float sd = 60;                // Define a standard deviation
+      float nsd = 20;
+      float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
+      float bean = height/2;
+      xloc = ( xloc * sd ) + mean;  // Scale the gaussian random number by standard deviation and mean
+      yloc = ( yloc * sd ) + bean;  // Scale the gaussian random number by standard deviation and bean
+      normalvariablename  = ( normalvariablename *  nsd ) + random(0, 20);
+
+      fill(255, 251, 0, 69);
+      noStroke();
+      ellipse(xloc, yloc, normalvariablename, normalvariablename);   // Draw an ellipse at our "normal" random position
     }
   }
 }
