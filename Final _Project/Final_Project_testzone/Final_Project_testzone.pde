@@ -28,7 +28,7 @@ void setup() {
   game = new Game();
   outroscreen = new OutroScreen();
 
-  stage = 0;                                                             //stage is set to 0 at the start
+  stage = 1;                                                             //stage is set to 0 at the start
 }
 
 void draw() {

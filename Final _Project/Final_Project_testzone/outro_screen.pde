@@ -18,6 +18,7 @@ class OutroScreen {
     imageMode(CORNER);
     image(background, 0, 0);
     imageMode(CENTER);
+    splash();
     particleSystem.update();                                      // shows the particle explosion selebration effect
     particleSystem.display();
 
@@ -26,5 +27,24 @@ class OutroScreen {
     } else if (game.woop2 == true) {
       image(player2, width/2, height/2);
     }
+  }
+
+  void splash() {
+    // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
+    float xloc = randomGaussian();
+    float yloc = randomGaussian();
+    float normalvariablename  = randomGaussian();
+
+    float sd = 60;                // Define a standard deviation
+    float nsd = 20;
+    float mean = width/2;         // Define a mean value (middle of the screen along the x-axis)
+    float bean = height/2;
+    xloc = ( xloc * sd ) + mean;  // Scale the gaussian random number by standard deviation and mean
+    yloc = ( yloc * sd ) + bean;  // Scale the gaussian random number by standard deviation and bean
+    normalvariablename  = ( normalvariablename *  nsd ) + random(0, 20);
+
+    fill(255, 251, 0, 69);
+    noStroke();
+    ellipse(xloc, yloc, normalvariablename, normalvariablename);   // Draw an ellipse at our "normal" random position
   }
 }
