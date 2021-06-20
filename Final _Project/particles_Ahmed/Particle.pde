@@ -10,15 +10,13 @@ class Particle {
   PVector gravity; 
   PVector friction;
   float lifetime = int(random(100, 255));
-  boolean isDead;
-
+  
   Particle(PVector loc) { //vectors that make for real-like physics
     location = new PVector(loc.x, loc.y);
     velocity = new PVector(random(-20, 20), random(-20, 20));
     gravity = new PVector(0, 0.3);
     friction = new PVector(0, 0);
   }
-
 
   void display() {
     noStroke();

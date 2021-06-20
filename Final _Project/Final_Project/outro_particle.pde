@@ -1,37 +1,33 @@
 class Particle {
-  // The Mover tracks location, velocity, and acceleration 
+  // The Mover tracks location, velocity 
   PVector location;
   PVector velocity;
-  PVector acceleration;
   PVector gravity; 
-  PVector friction;
-  float lifetime = int(random(100, 255));
-  
+  float lifespan, colourR, colourG, colourB;
+
   Particle(PVector loc) { //vectors that make for real-like physics
     location = new PVector(loc.x, loc.y);
     velocity = new PVector(random(-20, 20), random(-20, 20));
     gravity = new PVector(0, 0.3);
-    friction = new PVector(0, 0);
+    lifespan =  int(random(100, 255));
+    colourR = random(255);                                            //randomization of coulors
+    colourG = random(255);
+    colourB = random(255);
   }
 
   void display() {
     noStroke();
-    fill(0, lifetime * 0.5);
+    fill(colourR, colourG, colourB, lifespan * 0.5);
     ellipse(location.x, location.y, 15, 15);
   }
 
-
   void update() { //values for the vectors
     location.add(velocity);
-    velocity.normalize(friction);
-    friction.setMag(.08);
     velocity.add (gravity);
-    velocity.sub(friction);
-    lifetime = lifetime - 0.5;
+    lifespan = lifespan - 0.5;
   }
 
-
   boolean isDead() { //when the particles are transparant enough, return
-    return lifetime < 50;
+    return lifespan < 50;
   }
 }
