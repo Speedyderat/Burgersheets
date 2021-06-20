@@ -58,21 +58,21 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
-  game.mouseReleasedEvent();
+  game.mouseReleasedEvent();                                             //checks if the mouse is released to launch the puck
 }
 
 void mousePressed() {
-  introscreen.mousePressedEvent();
+  introscreen.mousePressedEvent();                                       //checks if the start button has been pressed
 }
 
 void mouseMoved() {
-  introscreen.mouseMovedEvent(new PVector(mouseX, mouseY));              //takes mouse input when hovering the mouse 
+  introscreen.mouseMovedEvent(new PVector(mouseX, mouseY));              //takes mouse input when hovering the mouse over the screen in the intro, needed for the start button
 }
 
 void keyPressed() {
-  game.keyPressedEvent();
+  game.keyPressedEvent();                                                //event to register keypresses for the movement of the paddles
 }
 
 void keyReleased() {
-  game.keysReleasedEvent();
+  game.keysReleasedEvent();                                              //event to register keyreleases to stop the movement of the paddles
 }
