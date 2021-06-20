@@ -45,7 +45,7 @@ class Boid {
     //PVector avo = avoidance(obstacle);
     PVector bor = borders();
     // Arbitrarily weight these forces
-    sep.mult(1.5);
+    sep.mult(4);
     ali.mult(1.0);
     coh.mult(2);
     //avo.mult(4);
@@ -91,8 +91,8 @@ class Boid {
     translate(position.x, position.y);
     rotate(theta);
     fill(colourR, colourG, colourB);                       //random colours for every particle and a lifespan
-    triangle(-20, -10, 0, -5, 0, 5);
-    triangle(20, -10, 0, -5, 0, 5);
+    triangle(-random(15,25), -10, 0, -5, 0, 5);
+    triangle(random(15,25), -10, 0, -5, 0, 5);
     triangle(-5, 15, 0, -5, 5, 15);
     triangle(-5, 15, 0, -5, 5, 15);
     ellipse(0, 0, 10, 20);
