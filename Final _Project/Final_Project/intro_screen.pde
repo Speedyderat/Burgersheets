@@ -102,7 +102,11 @@ class IntroScreen {
     fill(250, 125, 121);
     textFont(myFont);
     text(welcomeText, text1Location.x - 50, text1Location.y);
-    fill(148, 136, 130);
+
+    fill(67, 92, 92);
+    textFont(myFont2);
+    text(gameRules, text1Location.x - 399, text1Location.y + 81, 900, 200);
+    fill(181, 177, 176);
     textFont(myFont2);
     text(gameRules, text1Location.x - 400, text1Location.y + 80, 900, 200);
 
