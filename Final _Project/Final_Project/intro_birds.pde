@@ -33,7 +33,6 @@ class Bird {
   }
 
   void applyForce(PVector force) {
-    // We could add mass here if we want A = F / M
     acceleration.add(force);
   }
 

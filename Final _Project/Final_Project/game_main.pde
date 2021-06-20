@@ -29,15 +29,15 @@ class Game {
   }
 
   void run() {
-    stadium.underground();
-    score("display");
-    stadium.goal(puck);
-    stadium.borderPhysics(puck, player, player2);
-    player.run();
-    player2.run();
-    player.collision(puck);
+    stadium.underground();                                   //displays the underground of the stadium
+    score("display");                                        //displays the score at the top of the screen
+    stadium.goal(puck);                                      //checks whether a goal has been scored
+    stadium.borderPhysics(puck, player, player2);            //the physics of the borders
+    player.run();                                            //runs small physics line and displays the paddle of p1 
+    player2.run();                                           //runs small physics line and displays the paddle of p2 
+    player.collision(puck);                                  //checks for collision with the paddle and the puck and calculates physics if necessary
     player2.collision(puck);
-    puck.run();
+    puck.run();                                              //displays and runs the physics of the puck
     //the wall around, class stadium
     //details, maybe the railing in the middle, class stadium
   }
@@ -57,13 +57,13 @@ class Game {
     score = false;
   }
 
-  boolean gamedone() {                                      //when one of the players has scroed 3 points the game is done
+  boolean gamedone() {                                      //when one of the players has scored 3 points the game is done
     if ((score1 == 3 || score2 == 3)) {
       if (score1==3) {
-        woop = true;                                       // if woop is true then in the outro screen player 1 is the winner 
+        woop = true;                                        //if woop is true then in the outro screen player 1 is the winner
       }
       if (score2 == 3) {
-        woop2 = true;                                      // if woop2 is true then in the outro screen player 2 is the winner 
+        woop2 = true;                                       //if woop2 is true then in the outro screen player 2 is the winner
       }
       return true;
     } else {
@@ -71,20 +71,20 @@ class Game {
     }
   }
 
-  void mouseDraggedEvent(PVector mouseLocation) {          // handles the mouse dragged event from puck
+  void mouseDraggedEvent(PVector mouseLocation) {           // handles the mouse dragged event from puck
     puck.mouseDraggedEvent(mouseLocation);
   }
 
-  void mouseReleasedEvent() {                              // handles the mouse released event from puck
+  void mouseReleasedEvent() {                               // handles the mouse released event from puck
     puck.mouseReleasedEvent();
   }
 
-  void keyPressedEvent() {                                 // handles the key pressed events from the player classes 
+  void keyPressedEvent() {                                  // handles the key pressed events from the player classes 
     player.keysPressedEvent();
     player2.keysPressedEvent();
   }
 
-  void keysReleasedEvent() {                               // handles the key released events from the player classes 
+  void keysReleasedEvent() {                                // handles the key released events from the player classes 
     player.keysReleasedEvent();
     player2.keysReleasedEvent();
   }

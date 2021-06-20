@@ -27,13 +27,13 @@ class Stadium {
     line(width, uppergoal, width, lowergoal);
   }
 
-  void goal(Puck puck) {                                                // calculates wheather there has been a goal
+  void goal(Puck puck) {                                                // calculates whether there has been a goal
     if (((puck.location.y >= uppergoal) && (puck.location.y <= lowergoal)) && ((puck.location.x <= 0) || (puck.location.x >= width))) {
       puck.reset();                                                     //if there was a goal, the puck returns to its original placement
       game.score("score");
-      if (puck.location.x < width/2) {                                  // if the location of the puck was on the right side where the goal is, then it is a score for player 2
+      if (puck.location.x < width/2) {                                  //if the location of the puck was on the left side where the left goal is, then it is a goal for player 2
         game.score("p2");
-      } else {                                                          // otherwise if it is on the left side where the goal is then it is a score for player 1
+      } else {                                                          //otherwise if it is on the right side where the right goal is, then it is a goal for player 1
         game.score("p1");
       }
     }
