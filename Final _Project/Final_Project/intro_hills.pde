@@ -1,4 +1,10 @@
 //This class handles the continuesly moving background in intro, including a set of birds flying around
+// Class created using the following sources: 
+// Graphing 1D Perlin Noise (1D Noise Graph)
+// The Coding Train / Daniel Shiffman
+// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html
+// https://youtu.be/y7sgcFhk6ZM
+
 class Background { 
   Flock flock;
   float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start;

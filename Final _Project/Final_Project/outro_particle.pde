@@ -1,3 +1,5 @@
+// The following glass introduces the particle. It makes a particle and adds physical qualities to it in order to act like selebratory confeti. 
+
 class Particle {
   PVector location;
   PVector velocity;
