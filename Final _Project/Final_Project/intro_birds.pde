@@ -26,8 +26,8 @@ class Bird {
     colourB = random(255);
   }
 
-  void run(ArrayList<Bird> birds/*, Obstacle obstacle*/ ) {
-    flock(birds/*, obstacle*/);
+  void run(ArrayList<Bird> birds) {
+    flock(birds);
     update();
     render();
   }
@@ -38,23 +38,20 @@ class Bird {
   }
 
   // We accumulate a new acceleration each time based on three rules
-  void flock(ArrayList<Bird> birds/*, Obstacle obstacle*/) {
+  void flock(ArrayList<Bird> birds) {
     PVector sep = separate(birds);   // Separation
     PVector ali = align(birds);      // Alignment
     PVector coh = cohesion(birds);   // Cohesion
-    //PVector avo = avoidance(obstacle);
     PVector bor = borders();
-    // Arbitrarily weight these forces
     sep.mult(4);
     ali.mult(1.0);
     coh.mult(2);
-    //avo.mult(4);
     bor.mult(2);
+
     // Add the force vectors to acceleration
     applyForce(sep);
     applyForce(ali);
     applyForce(coh);
-    //applyForce(avo);
     applyForce(bor);
   }
 
@@ -91,8 +88,8 @@ class Bird {
     translate(position.x, position.y);
     rotate(theta);
     fill(colourR, colourG, colourB);                       //random colours for every particle and a lifespan
-    triangle(-random(15,25), -10, 0, -5, 0, 5);
-    triangle(random(15,25), -10, 0, -5, 0, 5);
+    triangle(-random(15, 25), -10, 0, -5, 0, 5);
+    triangle(random(15, 25), -10, 0, -5, 0, 5);
     triangle(-5, 15, 0, -5, 5, 15);
     triangle(-5, 15, 0, -5, 5, 15);
     ellipse(0, 0, 10, 20);
@@ -159,38 +156,6 @@ class Bird {
     }
     return steer;
   }
-
-  //// Avoidance
-  //// Method checks for nearby birds and steers away
-  //PVector avoidance (Obstacle obstacle) {
-
-  //  float desiredseparation = obstacle.radiusObstacle;
-  //  PVector steer = new PVector(0, 0, 0);
-
-  //  // For every bird in the system, check if it's too close
-  //  float d = PVector.dist(position, obstacle.location);
-  //  // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
-  //  if ((d > 0) && (d < desiredseparation)) {
-  //    // Calculate vector pointing away from neighbor
-  //    PVector diff = PVector.sub(position, obstacle.location);
-  //    diff.normalize();
-  //    diff.div(d);        // Weight by distance !
-  //    steer.add(diff);
-  //  }
-
-  //  // As long as the vector is greater than 0
-  //  if (steer.mag() > 0) {
-  //    // Implement Reynolds: Steering = Desired - Velocity
-
-  //    steer.normalize();
-
-  //    steer.mult(maxspeed);
-  //    steer.sub(velocity);
-  //    steer.limit(maxforce);
-  //  }
-  //  return steer;
-  //}
-
 
   // Alignment
   // For every nearby bird in the system, calculate the average velocity
