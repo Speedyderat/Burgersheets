@@ -96,10 +96,13 @@ class IntroScreen {
 
   void introText() { //character stays in the middle of the screen while the name of the game pops up
     //introducing the game
+    fill(122, 61, 59);
+    textFont(myFont);
+    text(welcomeText, text1Location.x - 47, text1Location.y+3);
     fill(250, 125, 121);
     textFont(myFont);
     text(welcomeText, text1Location.x - 50, text1Location.y);
-    fill(171, 209, 105);
+    fill(148, 136, 130);
     textFont(myFont2);
     text(gameRules, text1Location.x - 400, text1Location.y + 80, 900, 200);
 
@@ -132,7 +135,7 @@ class IntroScreen {
     if (mouse.x >= buttonLocation.x && mouse.y >= buttonLocation.y && mouse.x <= buttonLocation.x + textWidth(buttonText) && mouse.y <= buttonLocation.y + 55) {
       hover = true;
     } else {
-    hover = false;
+      hover = false;
     }
   }
 

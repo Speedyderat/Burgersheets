@@ -1,5 +1,4 @@
 class Particle {
-  // The Mover tracks location, velocity 
   PVector location;
   PVector velocity;
   PVector gravity; 
