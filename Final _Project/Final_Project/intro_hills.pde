@@ -1,15 +1,22 @@
-class Hills { //the continuesly moving background in intro
+class Background { //the continuesly moving background in intro
+  Flock flock;
 
-float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start;
+  float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start;
 
-  Hills() {
+  Background() {
     yincrement1 = 0.004;    //changes the sharpness or smoothness level of the mountains
     yincrement2 = 0.003;
     yincrement3 = 0.002;
     xSpeed = 0.001;
+
+    flock = new Flock();  // Add an initial set of boids into the system
+    for (int i = 0; i < 50; i++) {
+      Boid b = new Boid(width/2, height/2);
+      flock.addBoid(b);
+    }
   }
 
-  void display() {
+  void hills() {
     noStroke(); 
 
     //mountain 1
@@ -30,6 +37,8 @@ float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start;
     endShape();
 
     start += xSpeed;
+
+    flock.run();
 
     //mountain 2
     fill(252, 162, 139);

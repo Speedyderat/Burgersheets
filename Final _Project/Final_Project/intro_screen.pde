@@ -1,6 +1,6 @@
 class IntroScreen {
 
-  Hills hills;
+  Background background;
 
   int Stage, samDepth, samSize, i, samSpeed, buildingSpeed;
   boolean limit, hover, doorReached;
@@ -11,7 +11,7 @@ class IntroScreen {
 
 
   IntroScreen() {
-    hills = new Hills();
+    background = new Background();
 
     Stage = 0;
     samSpeed = 5; // change back to 2, this is so i dont have to wait 5h forh im to walk
@@ -39,7 +39,7 @@ class IntroScreen {
   void display() {
     background(164, 227, 236);
 
-    hills.display();
+    background.hills();
 
     // stage 0 is where sam walks into the screen
     if (Stage == 0) {
