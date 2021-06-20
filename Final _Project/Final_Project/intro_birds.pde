@@ -1,9 +1,11 @@
+// Bird class
+
+// Methods for Separation, Cohesion, Alignment added
+
 // The Nature of Code
 // Daniel Shiffman
 // http://natureofcode.com
 
-// Bird class
-// Methods for Separation, Cohesion, Alignment added
 
 class Bird {
 

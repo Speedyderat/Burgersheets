@@ -4,14 +4,7 @@
 //The project is created with knowledge we gained during the assignments we did this module, and during previous modules. 
 //We also used examples from Daniel Shiffman’s The Nature of Code and a simple air hockey game that we took inspiration from, but made our own.
 
-//sources used:
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-
-// Air Hockey game by Andreas
-// Andreas
-// https://openprocessing.org/sketch/975642
+//(sources on the bottom of the screen)
 
 IntroScreen introscreen;                                                 //the introduction screen
 Game game;                                                               //the actual game
@@ -32,19 +25,16 @@ void setup() {
 }
 
 void draw() {
-  
+
   stagechecker();                                                        //stage checker that checks if the intro or game is done so it can switch to the next stage
-  
+
   if (stage == 0) {
     introscreen.display();
-    
   } else if (stage == 1) {
     game.run();
-    
   } else if (stage == 2) {
     outroscreen.display(game);                                           //needs input from game to display which player has won
   }
-  
 }
 
 void stagechecker() {
@@ -76,3 +66,18 @@ void keyPressed() {
 void keyReleased() {
   game.keysReleasedEvent();                                              //event to register keyreleases to stop the movement of the paddles
 }
+
+//sources used:
+// The Nature of Code
+// Daniel Shiffman
+// http://natureofcode.com
+
+// Air Hockey game by Andreas
+// Andreas
+// https://openprocessing.org/sketch/975642
+
+// Graphing 1D Perlin Noise (1D Noise Graph)
+// https://youtu.be/y7sgcFhk6ZM
+
+// The Coding Train / Daniel Shiffman
+// https://thecodingtrain.com/learning/noise/0.4-graphing-1d.html

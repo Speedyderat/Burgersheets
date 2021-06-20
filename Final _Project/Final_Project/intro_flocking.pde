@@ -1,9 +1,10 @@
+// Flock class
+
+// Does very little, simply manages the ArrayList of all the birds
+
 // The Nature of Code
 // Daniel Shiffman
 // http://natureofcode.com
-
-// Flock class
-// Does very little, simply manages the ArrayList of all the birds
 
 class Flock {
   ArrayList<Bird> birds; // An ArrayList for all the birds
