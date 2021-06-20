@@ -1,9 +1,11 @@
 //beep
-import java.util.Iterator;
-  
+//import java.util.Iterator;
+
 IntroScreen introscreen;
 Game game;
 OutroScreen outroscreen;
+//ParticleSystem particleSystem;
+
 
 int stage;
 
@@ -14,8 +16,10 @@ void setup() {
   introscreen = new IntroScreen();
   game = new Game();
   outroscreen = new OutroScreen();
+  // particleSystem = new ParticleSystem();
 
-  stage =1;
+
+  stage = 1;
 }
 
 void draw() {
@@ -26,13 +30,15 @@ void draw() {
     game.run();
   } else if (stage == 2) {
     outroscreen.display(game);
+    //particleSystem.run();
+    //particleSystem.addParticle();
   }
 }
 
 void stagechecker() {
-  if (introscreen.introdone() || game.gamedone()){
+  if (introscreen.introdone() || game.gamedone()) {
     stage++;
-  } 
+  }
 }
 
 void mouseDragged() {
