@@ -7,15 +7,15 @@
 // http://natureofcode.com
 
 class Flock {
-  ArrayList<Bird> birds; // An ArrayList for all the birds
+  ArrayList<Bird> birds;                                   // An ArrayList for all the birds
 
   Flock() {
-    birds = new ArrayList<Bird>(); // Initialize the ArrayList
+    birds = new ArrayList<Bird>();                         // Initialize the ArrayList
   }
 
   void run() {
     for (Bird boid : birds) {
-      boid.run(birds);  // Passing the entire list of birds to each boid individually
+      boid.run(birds);                                     // Passing the entire list of birds to each boid individually
     }
   }
 

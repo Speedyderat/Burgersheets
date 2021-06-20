@@ -37,12 +37,12 @@ class Bird {
     acceleration.add(force);
   }
 
-  // We accumulate a new acceleration each time based on three rules
+  // We accumulate a new acceleration each time based on four rules, seperation, alignment, cohesion, borders. each laaw has different weights 
   void flock(ArrayList<Bird> birds) {
-    PVector sep = separate(birds);   // Separation
-    PVector ali = align(birds);      // Alignment
-    PVector coh = cohesion(birds);   // Cohesion
-    PVector bor = borders();
+    PVector sep = separate(birds);                                    // Separation
+    PVector ali = align(birds);                                       // Alignment
+    PVector coh = cohesion(birds);                                    // Cohesion
+    PVector bor = borders();                                          // Borders
     sep.mult(4);
     ali.mult(1.0);
     coh.mult(2);
@@ -57,37 +57,31 @@ class Bird {
 
   // Method to update position
   void update() {
-    // Update velocity
-    velocity.add(acceleration);
-    // Limit speed
-    velocity.limit(maxspeed);
+    velocity.add(acceleration);                                      // Update velocity
+    velocity.limit(maxspeed);                                        // Limit speed
     position.add(velocity);
-    // Reset accelertion to 0 each cycle
-    acceleration.mult(0);
+    acceleration.mult(0);                                            // Reset accelertion to 0 each cycle
   }
 
   // A method that calculates and applies a steering force towards a target
   // STEER = DESIRED MINUS VELOCITY
   PVector seek(PVector target) {
-    PVector desired = PVector.sub(target, position);  // A vector pointing from the position to the target
-    // Normalize desired and scale to maximum speed
-    desired.normalize();
+    PVector desired = PVector.sub(target, position);                 // A vector pointing from the position to the target
+    desired.normalize();                                             // Normalize desired and scale to maximum speed
     desired.mult(maxspeed);
-    // Steering = Desired minus Velocity
-    PVector steer = PVector.sub(desired, velocity);
-    steer.limit(maxforce);  // Limit to maximum steering force
+    PVector steer = PVector.sub(desired, velocity);                  // Steering = Desired minus Velocity
+    steer.limit(maxforce);                                           // Limit to maximum steering force
     return steer;
   }
 
-  void render() {
-    // Draw a triangle rotated in the direction of velocity
+  void render() {                                                    // Draw a triangle rotated in the direction of velocity
     float theta = velocity.heading2D() + radians(90);
     fill(175);
     noStroke();
     pushMatrix();
     translate(position.x, position.y);
     rotate(theta);
-    fill(colourR, colourG, colourB);                       //random colours for every particle and a lifespan
+    fill(colourR, colourG, colourB);                                 //random colours for every particle and a lifespan
     triangle(-random(15, 25), -10, 0, -5, 0, 5);
     triangle(random(15, 25), -10, 0, -5, 0, 5);
     triangle(-5, 15, 0, -5, 5, 15);
@@ -98,7 +92,6 @@ class Bird {
   }
 
   PVector borders() {
-
     PVector steer = new PVector(0, 0, 0);
 
     if (position.x < -radius+50) {
@@ -136,9 +129,9 @@ class Bird {
         // Calculate vector pointing away from neighbor
         PVector diff = PVector.sub(position, other.position);
         diff.normalize();
-        diff.div(d);        // Weight by distance
+        diff.div(d);                                                  // Weight by distance
         steer.add(diff);
-        count++;            // Keep track of how many
+        count++;                                                      // Keep track of how many
       }
     }
     // Average -- divide by how many
@@ -186,18 +179,18 @@ class Bird {
   // For the average position (i.e. center) of all nearby birds, calculate steering vector towards that position
   PVector cohesion (ArrayList<Bird> birds) {
     float neighbordist = 50;
-    PVector sum = new PVector(0, 0);   // Start with empty vector to accumulate all positions
+    PVector sum = new PVector(0, 0);                                     // Start with empty vector to accumulate all positions
     int count = 0;
     for (Bird other : birds) {
       float d = PVector.dist(position, other.position);
       if ((d > 0) && (d < neighbordist)) {
-        sum.add(other.position); // Add position
+        sum.add(other.position);                                         // Add position
         count++;
       }
     }
     if (count > 0) {
       sum.div(count);
-      return seek(sum);  // Steer towards the position
+      return seek(sum);                                                  // Steer towards the position
     } else {
       return new PVector(0, 0);
     }
