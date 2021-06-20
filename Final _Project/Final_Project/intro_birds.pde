@@ -12,7 +12,6 @@ class Bird {
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
   float colourR, colourG, colourB;
-  //Obstacle obstacle;
 
   Bird(float x, float y) {
     acceleration = new PVector(0, 0);
