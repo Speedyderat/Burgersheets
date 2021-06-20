@@ -1,28 +1,25 @@
 class IntroScreen {
 
-  int Stage, samDepth, samSize;
+  Hills hills;
+
+  int Stage, samDepth, samSize, i, samSpeed, buildingSpeed;
   boolean limit, hover, doorReached;
-  float xoff, yincrement1, yincrement2, yincrement3, xSpeed, start, i, samSpeed, buildingSpeed;
   PImage sam, building;
   PVector samLocation, buttonLocation, text1Location, buildingLocation;
-  String buttonText, welcomeText, gameRules;
   PFont myFont, myFont2;
+  String buttonText, welcomeText, gameRules;
 
 
   IntroScreen() {
+    hills = new Hills();
+
     Stage = 0;
-
-    yincrement1 = 0.004;    //changes the sharpness or smoothness level of the mountains
-    yincrement2 = 0.003;
-    yincrement3 = 0.002;
-    xSpeed = 0.001;
-
-    samSpeed = 5; // chamnge back to 2, this is so i dont have to wait 5h forh im to walk
+    samSpeed = 5; // change back to 2, this is so i dont have to wait 5h forh im to walk
     buildingSpeed = 5;
-    limit = false;
-    doorReached = false;
     samDepth = 255;
     samSize = 700;
+    limit = false;
+    doorReached = false;
 
     sam = loadImage("image/stickfigure.png");
     building = loadImage("image/stadium.png");
@@ -32,17 +29,17 @@ class IntroScreen {
     text1Location = new PVector(width/2 - 50, 100);
     buildingLocation = new PVector(width +150, 0);
 
+    myFont = createFont("Calibri Bold", 50);
+    myFont2 = createFont("Calibri Bold", 25);
     buttonText = "START GAME";
     welcomeText = "AIRHOCKEY ";
     gameRules = "Welcome to our Airhockey game :) The rules are simple, just like in a normal airhockey game. Players can controll the controllers using the WSAD and the arrow keys. The starting player gets to start the game by dragging and shooting the puck in the opponets direction. Good luck and may the odds be ever in your favor.";
-    myFont = createFont("Calibri Bold", 50);
-    myFont2 = createFont("Calibri Bold", 25);
   }
 
   void display() {
     background(164, 227, 236);
 
-    hills();
+    hills.display();
 
     // stage 0 is where sam walks into the screen
     if (Stage == 0) {
@@ -56,7 +53,7 @@ class IntroScreen {
       samSpeed = 0;
       introText();
 
-      // teuetueu
+      // in stage
     } else if (Stage == 2) {
 
       if (samLocation.x > width *3/4 + 50) {
@@ -137,99 +134,18 @@ class IntroScreen {
     }
   }
 
-  //making the button clickable
-  void mousePressedEvent() {
-    if (hover) {
-      Stage++;
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  void hills() { //the continuesly moving background
-    noStroke(); 
-
-    //mountain 1
-    fill( 251, 197, 196);
-
-    beginShape();
-    vertex(0, height);
-    xoff = start;
-
-    for (float x = 0; x < width; x++) {
-      stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 100, 250); // location of the mountains
-      vertex(x, y);
-      xoff += yincrement1;
-    }
-
-    vertex(width, height);
-    endShape();
-
-    start += xSpeed;
-
-    //mountain 2
-    fill(252, 162, 139);
-
-    beginShape();
-    vertex(0, height);
-    xoff = start;
-
-    for (float x = 0; x < width; x++) {
-      stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 300, 450); // location of the mountains
-      vertex(x, y);
-      xoff += yincrement2;
-    }
-
-    vertex(width, height);
-    endShape();
-
-    start += xSpeed;
-
-    //mountain 3
-    fill(250, 125, 121);
-
-    beginShape();
-    vertex(0, height);
-    xoff = start;
-
-    for (float x = 0; x < width; x++) {
-      stroke(255);
-      float y = map(noise(xoff) * height, 0, height, 500, 550); // location of the mountains
-      vertex(x, y);
-      xoff += yincrement3;
-    }
-
-    vertex(width, height);
-    endShape();
-
-    start += xSpeed;
-  }
-
   boolean introdone() { //when the character has reached the edge the intro is done
     if (stage == 3) {
       return true;
     } else {
       return false;
+    }
+  }
+
+  //making the button clickable
+  void mousePressedEvent() {
+    if (hover) {
+      Stage++;
     }
   }
 }
