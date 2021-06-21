@@ -45,9 +45,9 @@ class OutroScreen {
     glisterLocation = new PVector(randomGaussian(), randomGaussian());
     glisterRadius  = randomGaussian();
 
-    glisterLocation.mult(standardDeviationMax);
-    glisterLocation.x += mean;                                  // Scale the gaussian random number by standard deviation and mean
-    glisterLocation.y += mean2;                                 // Scale the gaussian random number by standard deviation and bean
+    glisterLocation.mult(standardDeviationMax);                                             // Scale the gaussian random number by standard deviation and mean
+    glisterLocation.x += mean;
+    glisterLocation.y += mean2;
     glisterRadius  = ( glisterRadius *  standardDeviationMin ) + random(0, 20);
 
     noStroke();
