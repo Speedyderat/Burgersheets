@@ -4,7 +4,7 @@
 
 class Puck {
 
-  PVector location, acceleration, velocity;
+  PVector location, acceleration;
   PVector mouse, launchLocation;
 
   int puckState;
@@ -14,7 +14,6 @@ class Puck {
     location = new PVector(width/2, height/2);
     launchLocation = new PVector(width/2, height/2);
     acceleration = new PVector(0, 0);
-    velocity = new PVector(0, 0);
 
     puckState = 0;
     puckColor = color(250, 200, 100);

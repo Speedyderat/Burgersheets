@@ -55,7 +55,7 @@ class IntroScreen {
         Stage++;
       }
 
-      // in stage 1 sam stays in the middle of the screen, walking while the explaination of the game is being presented
+      // in stage 1 sam stays in the middle of the screen, walking while the explaination of the game is being presented, stage changes whe nbutton is clicked
     } else if (Stage == 1) {
       samSpeed = 0;
       introText();
