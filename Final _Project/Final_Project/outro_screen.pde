@@ -6,17 +6,19 @@
 class OutroScreen {
   ParticleSystem particleSystem;
   PImage player1, player2, background;
-  float xloc, yloc, normalvariablename, sd, nsd, mean, mean2;
+  float glisterRadius, standardDeviationMax, standardDeviationMin, mean, mean2;
+  PVector glisterLocation;
 
   OutroScreen() {
     particleSystem = new ParticleSystem();
+
     background = loadImage("image/outroBackground.png");
     player1 = loadImage("image/player1.png");
     player2 = loadImage("image/player2.png");
 
-    sd = 20;                                               // Define a standard deviation
-    nsd = 10;
-    mean = width/2;                                        // Define a mean value (middle of the screen along the x-axis)
+    standardDeviationMax = 20;                                     // Define a standard deviation
+    standardDeviationMin = 10;
+    mean = width/2;                                                // Define a mean value (middle of the screen along the x-axis)
     mean2 = height/2+75;
   }
 
@@ -38,17 +40,18 @@ class OutroScreen {
   }
 
   void glistening() {
+
     // Get a gaussian random number w/ mean of 0 and standard deviation of 1.0
-    xloc = randomGaussian();
-    yloc = randomGaussian();
-    normalvariablename  = randomGaussian();
+    glisterLocation = new PVector(randomGaussian(), randomGaussian());
+    glisterRadius  = randomGaussian();
 
-    xloc = ( xloc * sd ) + mean;                                 // Scale the gaussian random number by standard deviation and mean
-    yloc = ( yloc * sd ) + mean2;                                 // Scale the gaussian random number by standard deviation and bean
-    normalvariablename  = ( normalvariablename *  nsd ) + random(0, 20);
+    glisterLocation.mult(standardDeviationMax);
+    glisterLocation.x += mean;                                  // Scale the gaussian random number by standard deviation and mean
+    glisterLocation.y += mean2;                                 // Scale the gaussian random number by standard deviation and bean
+    glisterRadius  = ( glisterRadius *  standardDeviationMin ) + random(0, 20);
 
-    fill(255, 251, 0, 69);
     noStroke();
-    ellipse(xloc, yloc, normalvariablename, normalvariablename); // Draw an ellipse at our "normal" random position
+    fill(255, 251, 0, 69);                                                                 //golden glistening color for the cup
+    ellipse(glisterLocation.x, glisterLocation.y, glisterRadius, glisterRadius);           // Draw an ellipse at our "normal" random position
   }
 }
